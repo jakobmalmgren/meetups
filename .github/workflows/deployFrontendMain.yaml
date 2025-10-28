@@ -6,7 +6,6 @@ on:
 
 jobs:
   deploy-frontend-dev:
-    buid-and-deploy:
       runs-on: ubuntu-latest
       steps:
         - name: Check PR source branch
