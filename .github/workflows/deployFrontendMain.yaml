@@ -2,7 +2,7 @@ name: deploy frontend-main to s3
 on:
   pull_request:
     branches:
-      - frontend-main-test    
+      - main    
 
 jobs:
   deploy-frontend-dev:

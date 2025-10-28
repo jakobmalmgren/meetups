@@ -3,7 +3,7 @@ name: Build, push and deploy backend, API (main)
 on:
   pull_request:
     branches:
-      - backend-main-test
+      - main
 
 jobs:
   docker:
