@@ -1,7 +1,7 @@
 name: Build, push and deploy backend, API (main)
 
 on:
-  push:
+  pull_request:
     branches:
       - backend-main-test
 
