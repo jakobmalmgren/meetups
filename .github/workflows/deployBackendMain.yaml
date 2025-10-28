@@ -10,6 +10,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Check PR source branch
+      run: |
+        if [ "${{ github.head_ref }}" != "dev" ]; then
+          echo "PR must come from dev branch!"
+          exit 1
+        fi
+
     - name: Check out repository
       uses: actions/checkout@v3
 
@@ -34,10 +41,9 @@ jobs:
     - name: Deploy to Render (prod)
       env:
         deploy_url: ${{ secrets.RENDER_DEPLOY_URL }}
-      # run: |
-      #   curl "$deploy_url"
-
       run: |
-        curl -X POST "$deploy_url" -H "Accept: application/json" --fail
+        curl "$deploy_url"
+
+
       
       
