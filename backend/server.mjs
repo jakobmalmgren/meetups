@@ -8,7 +8,7 @@ app.use(express.json());
 app.use(cors())
 
 app.get('/api', (req, res) => {
-  res.send('nytt api');
+  res.send('nytt apihej');
 });
 
 
