@@ -1,8 +1,12 @@
 name: deploy frontend-main to s3
 on:
-  push:
+  # push:
+  #   branches:
+  #     - frontend-main-test 
+  pull_request:
     branches:
-      - frontend-main-test 
+      - frontend-main-test    
+
 jobs:
   deploy-frontend-dev:
     buid-and-deploy:
