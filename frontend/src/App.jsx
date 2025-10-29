@@ -3,7 +3,7 @@ import "./App.css";
 function App() {
   return (
     <>
-      <h1>NYTT</h1>
+      <h1>hej o hå</h1>
     </>
   );
 }
