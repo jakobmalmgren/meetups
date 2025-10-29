@@ -7,7 +7,7 @@ function App() {
   return (
     <>
     
-      <h1>maju</h1>
+      <h1>hej</h1>
       
     </>
   )
