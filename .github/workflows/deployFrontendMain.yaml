@@ -3,7 +3,7 @@ name: deploy frontend-main to s3
 on:
   pull_request:
     branches:
-      - main    
+      - main
 
 jobs:
   deploy-frontend-main:
@@ -27,7 +27,7 @@ jobs:
 
       - name: Install dependencies
         working-directory: ./frontend
-        env:  
+        env:
           VITE_BACKEND_URL: ${{ secrets.VITE_BACKEND_URL }}
         run: npm ci
 
@@ -45,5 +45,5 @@ jobs:
           AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET_FRONTEND_MAIN }}
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_REGION: 'eu-north-1'
-          SOURCE_DIR: 'frontend/dist'
+          AWS_REGION: "eu-north-1"
+          SOURCE_DIR: "frontend/dist"
