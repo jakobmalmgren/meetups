@@ -1,18 +1,15 @@
-import express from "express"   
+import express from "express";
 const app = express();
-const PORT = 3000
+const PORT = 3000;
 import cors from "cors";
 
-
 app.use(express.json());
-app.use(cors())
+app.use(cors());
 
-app.get('/api', (req, res) => {
-  res.send('nytt apihej');
+app.get("/api", (req, res) => {
+  res.send("lalala");
 });
-
 
 app.listen(PORT, async () => {
   console.log(`Servern körs på http://localhost:${PORT}`);
 });
-
