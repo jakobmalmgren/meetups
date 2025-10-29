@@ -7,7 +7,7 @@ app.use(express.json());
 app.use(cors());
 
 app.get("/api", (req, res) => {
-  res.send("från dev");
+  res.send("lalala");
 });
 
 app.listen(PORT, async () => {
