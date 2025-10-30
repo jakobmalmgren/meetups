@@ -1,0 +1,66 @@
+.sign-up {
+  background-color: red;
+  /* background-color: #1e1e1e; */
+
+  width: 400px;
+  height: 900px;
+  /* display: flex;
+  flex-direction: column; */
+}
+.sign-up_upper-wrapper {
+  background-color: gold;
+  width: 100%;
+  height: 40%;
+}
+.sign-up_lower-wrapper {
+  width: 100%;
+  height: 40%;
+  background-color: pink;
+}
+.sign-up_header-wrapper {
+  background-color: green;
+  height: 20%;
+}
+.sign-up_header {
+  /* padding-top: 15px; */
+  text-align: center;
+  /* background-color: grey; */
+  font-family: Merriweather;
+  font-weight: 900;
+  font-style: Black;
+  font-size: 64px;
+}
+.sign-up_span {
+  color: #cf8c22;
+}
+.sign-up_sec-header {
+  font-family: Merriweather;
+  font-weight: 700;
+  font-style: Bold;
+  font-size: 20px;
+  line-height: 150%;
+  letter-spacing: -2.2%;
+}
+.sign-up_link {
+  text-align: end;
+}
+.sign-up_icon-wrapper {
+  height: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: blueviolet;
+}
+.sign-up_link-wrapper {
+  background-color: aqua;
+  display: flex;
+  justify-content: end;
+  margin-top: 10px;
+}
+/* .icon-wrapper {
+  background-color: #7d7972;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} */

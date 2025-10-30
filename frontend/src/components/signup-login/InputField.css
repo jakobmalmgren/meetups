@@ -1,0 +1,27 @@
+.input {
+  background-color: green;
+  width: 100%;
+}
+/* .input_header {
+} */
+.inputfield {
+  width: 100%;
+  height: 35px;
+  background-color: white;
+  border: none;
+  border-radius: 15px;
+  margin-bottom: 15px;
+}
+
+.inputfield::placeholder {
+  color: black;
+  opacity: 1; /* Gör den helt synlig (vissa browsers sänker opaciteten som standard) */
+}
+/* h3 {
+  width: 100%;
+  display: flex;
+} */
+
+.input_header {
+  font-size: 12px;
+}

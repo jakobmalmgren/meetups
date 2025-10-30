@@ -1,9 +1,10 @@
 import "./App.css";
+import Signup from "./components/signup-login/SignUp";
 
 function App() {
   return (
     <>
-      <h1>hej o hå igen......</h1>
+      <Signup></Signup>
     </>
   );
 }
