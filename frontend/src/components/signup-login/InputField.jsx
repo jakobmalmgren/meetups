@@ -7,7 +7,6 @@ function InputField() {
       <input className="inputfield" type="text" placeholder="Email.." />
       <h3 className="input_header">Password</h3>
       <input type="text" className="inputfield" placeholder="Password.." />
-      <SignupLoginbtn>Sign up</SignupLoginbtn>
     </section>
   );
 }

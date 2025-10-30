@@ -1,6 +1,7 @@
 import "./SignUp.css";
 import Icon from "./Icon.jsx";
 import InputField from "./InputField.jsx";
+import SignupLoginbtn from "./SignupLoginbtn.jsx";
 import { Link } from "react-router-dom";
 function Signup() {
   return (
@@ -19,6 +20,7 @@ function Signup() {
       <section className="sign-up_lower-wrapper">
         <h1 className="sign-up_sec-header">Sign up</h1>
         <InputField></InputField>
+        <SignupLoginbtn>Sign up</SignupLoginbtn>
         {/* <Link to="/login">Login</Link> */}
         <section className="sign-up_link-wrapper">
           <a className="sign-up_link" href="">
