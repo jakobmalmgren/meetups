@@ -1,0 +1,38 @@
+.navbar {
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 30px;
+  background-color: none;
+}
+
+.links a {
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-right: 40px;
+  text-decoration: none;
+  font-family: 'Merriweather', serif;
+  font-size: x-large;
+}
+
+.links a.active {
+  color: #cf8c22;
+}
+
+.icon {
+  color: white;
+  font-size: x-large;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.icon:hover {
+  color: #cf8c22;
+}
+
+.links a:hover {
+  color: #cf8c22; /* samma orange som din active-färg */
+  transition: color 0.2s ease;
+}
