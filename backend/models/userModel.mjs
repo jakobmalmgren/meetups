@@ -10,7 +10,7 @@ const userSchema = new mongoose.Schema({
     trim: true,
   },
   password: { type: String, required: true, minlength: 8 },
-  registeredMeetups: [{ type: mongoose.Schema.Types.ObjectId, ref: Meetup }],
+  registeredMeetups: [{ type: mongoose.Schema.Types.ObjectId, ref: "Meetup" }],
 });
 userSchema.index({ email: 1 }, { unique: true });
 
