@@ -13,6 +13,8 @@
   font-weight: 700;
   margin-right: 40px;
   text-decoration: none;
+  font-family: 'Merriweather', serif;
+  font-size: x-large;
 }
 
 .links a.active {
@@ -21,7 +23,7 @@
 
 .icon {
   color: white;
-  font-size: 2rem;
+  font-size: x-large;
   cursor: pointer;
   transition: color 0.2s ease;
 }
