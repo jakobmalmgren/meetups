@@ -1,5 +1,6 @@
 import "./Home.css";
 import meetingImage from "../assets/meet.png";
+import Navbar from "../components/navbar/Navbar.jsx";
 
 export default function Home() {
   return (
@@ -10,6 +11,7 @@ export default function Home() {
         <p>The future of meetups</p>
         <img src={meetingImage} alt="Business meeting" />
       </div>
+      <Navbar />
     </div>
   );
 }
