@@ -1,5 +1,5 @@
 import "./Home.css";
-import meetingImage from "../../assets/meeting.jpg"; // byt ut mot din egen bild
+import meetingImage from "../assets/meet.png";
 
 export default function Home() {
   return (
