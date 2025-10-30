@@ -9,11 +9,13 @@ export const signup = async (req, res, next) => {
     if (exists)
       return res.status(409).json({ error: "This email is already in use..." });
 
-    const salt = await bcrypt.salt(10);
+    const salt = await bcrypt.genSalt(10);
     const hash = await bcrypt.hash(password, salt);
-    const user = await User.create({ name, email, password: hash });
+    const user = await User.create({ email, password: hash });
 
-    return res.status(201).json({ user: user.toJson() });
+    return res
+      .status(201)
+      .json({ message: "Account created", userId: user._id });
   } catch (err) {
     return err?.code === 11000
       ? res.status(409).json({ error: "Email already regist..." })

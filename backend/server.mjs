@@ -2,6 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 import connectDB from "./config/db.mjs";
+import userRouter from "./routes/userRoutes.mjs";
 
 dotenv.config();
 
@@ -19,7 +20,7 @@ app.use(
 );
 app.use(express.json());
 
-/* app.use("/api/users", userRouter); */
+app.use("/api/users", userRouter);
 
 // Check för render
 app.get("/api", (req, res) => {
