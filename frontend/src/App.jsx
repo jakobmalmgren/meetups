@@ -1,11 +1,14 @@
-import "./App.css";
+import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/navbar/Navbar.jsx";
+import Home from "./pages/Home.jsx";
 
 function App() {
   return (
     <>
-      <Navbar />
-      <h1>hej o hå igen......</h1>
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
+    <Navbar />
     </>
   );
 }
