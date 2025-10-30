@@ -1,6 +1,8 @@
 .sign-up {
-  background-color: red;
+  /* background-color: red; */
   /* background-color: #1e1e1e; */
+  background-color: #1e1e1e;
+  border: 2px solid white;
 
   width: 600px;
   height: 1000px;
@@ -8,17 +10,17 @@
   flex-direction: column; */
 }
 .sign-up_upper-wrapper {
-  background-color: gold;
+  /* background-color: gold; */
   width: 100%;
   height: 40%;
 }
 .sign-up_lower-wrapper {
   width: 100%;
   height: 40%;
-  background-color: pink;
+  /* background-color: pink; */
 }
 .sign-up_header-wrapper {
-  background-color: green;
+  /* background-color: green; */
   height: 20%;
 }
 .sign-up_header {
@@ -44,23 +46,19 @@
 .sign-up_link {
   text-align: end;
 }
+a {
+  color: #cf8c22;
+}
 .sign-up_icon-wrapper {
   height: 80%;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: blueviolet;
+  /* background-color: blueviolet; */
 }
 .sign-up_link-wrapper {
-  background-color: aqua;
+  /* background-color: aqua; */
   display: flex;
   justify-content: end;
   margin-top: 10px;
 }
-/* .icon-wrapper {
-  background-color: #7d7972;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-} */
