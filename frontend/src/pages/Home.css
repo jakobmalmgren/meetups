@@ -1,40 +1,43 @@
 .home {
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* kort + navbar */
+  justify-content: space-between;
   align-items: center;
   background-color: #121212;
-  width: 400px;
-  height: 700px;
+  max-width: 600px;
+  max-height: 1000px;
   border-radius: 30px;
   margin: 40px auto;
-  box-shadow: 0 0 25px rgba(0, 0, 0, 0.4);
-  overflow: hidden; /* döljer eventuellt överspill */
+  box-shadow: 0 0 25px rgba(79, 31, 31, 0.4);
+  overflow: hidden;
 }
 
 .home-card {
   background-color: #1a1a1a;
   border-radius: 20px;
   padding: 40px 30px;
-  max-width: 400px;
+  max-width: 700px;
+  height: 1000px;
   text-align: center;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
 }
 
 .home-card h2 {
+  padding-top: 5%;
   font-family: 'Merriweather', serif;
   color: #fff;
   margin-bottom: 0.5rem;
-  font-size: 1.3rem;
+  font-size: 2.5rem;
   font-weight: 400;
 }
 
 .home-card h1 {
   font-family: 'Merriweather', serif;
   color: #fff;
-  font-size: 2.4rem;
+  font-size: 4rem;
   font-weight: 700;
   margin-bottom: 0.3rem;
+  padding-bottom: 10%;
 }
 
 .home-card h1 span {
@@ -48,7 +51,7 @@
 }
 
 .home-card img {
-  width: 100%;
+  width: 60%;
   border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  border: rgb(255, 255, 255) 10px solid ;
 }
