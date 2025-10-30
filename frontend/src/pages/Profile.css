@@ -1,6 +1,8 @@
+
+/* Förhindra att globala regler överskriver bredd/höjd */
 .profile {
-  width: 600px; 
-  height: 1000px;
+  width: 600px !important;
+  height: 1000px !important;
   background-color: #121212;
   border-radius: 30px;
   margin: 40px auto;
@@ -23,10 +25,11 @@
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
 }
 
+
 .profile-img,
 .profile-icon {
   width: 250px;
-  height: 200px;
+  height: 250px;
   border-radius: 50%;
   margin-bottom: 15px;
   background-color: #1a1a1a;
