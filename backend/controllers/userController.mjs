@@ -1,4 +1,4 @@
-import { User } from "../models/userModel.mjs";
+import { User } from "../models/userSchema.mjs";
 import bcrypt from "bcryptjs";
 
 export const signup = async (req, res, next) => {
@@ -11,7 +11,6 @@ export const signup = async (req, res, next) => {
 
     const salt = await bcrypt.salt(10);
     const hash = await bcrypt.hash(password, salt);
-
     const user = await User.create({ name, email, password: hash });
 
     return res.status(201).json({ user: user.toJson() });
