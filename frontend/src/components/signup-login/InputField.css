@@ -1,27 +1,45 @@
 .input {
-  /* background-color: green; */
   width: 100%;
+  margin-bottom: 20px;
 }
-/* .input_header {
-} */
+
 .inputfield {
   width: 100%;
   height: 35px;
+  height: 100%;
   background-color: white;
   border: none;
   border-radius: 15px;
-  margin-bottom: 15px;
+  padding: 20px 15px;
+  color: black;
 }
 
 .inputfield::placeholder {
   color: black;
-  opacity: 1; /* Gör den helt synlig (vissa browsers sänker opaciteten som standard) */
 }
-/* h3 {
-  width: 100%;
-  display: flex;
-} */
 
 .input_header {
   font-size: 12px;
+}
+.input_wrapper {
+  height: 35px;
+  position: relative;
+}
+.email-icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: black;
+  font-size: 20px;
+  pointer-events: none;
+}
+.password-icon {
+  position: absolute;
+  right: 10px; /* avstånd från vänster kant */
+  top: 50%;
+  transform: translateY(-50%); /* centrera vertikalt */
+  color: black;
+  font-size: 20px;
+  pointer-events: none;
 }
