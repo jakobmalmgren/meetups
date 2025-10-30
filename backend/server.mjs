@@ -1,15 +1,36 @@
 import express from "express";
-const app = express();
-const PORT = 3000;
+import dotenv from "dotenv";
 import cors from "cors";
+import connectDB from "./config/db.mjs";
 
+dotenv.config();
+
+const app = express();
+
+const PORT = process.env.PORT || 3000;
+
+const allowedOrigin = process.env.CLIENT_URL;
+
+app.use(
+  cors({
+    origin: allowedOrigin,
+    credentials: true,
+  })
+);
 app.use(express.json());
-app.use(cors());
 
+/* app.use("/api/users", userRouter); */
+
+// Check för render
 app.get("/api", (req, res) => {
-  res.send("lalala");
+  res.send("Lala,lal");
 });
 
-app.listen(PORT, async () => {
-  console.log(`Servern körs på http://localhost:${PORT}`);
-});
+const startServer = async () => {
+  await connectDB();
+  app.listen(PORT, () => {
+    console.log(`Server körs på http://localhost:${PORT}`);
+  });
+};
+
+startServer();
