@@ -1,5 +1,5 @@
 import bcrypt from "bcryptjs";
-import { User } from "../models/userSchema.mjs";
+import { User } from "../models/userModel.mjs";
 import { signJwt } from "../utils/jwt.mjs";
 
 export const login = async (req, res, next) => {
