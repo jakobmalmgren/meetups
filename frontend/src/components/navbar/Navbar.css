@@ -1,10 +1,16 @@
 .navbar {
+  position: fixed;          /* håller navbaren fast */
+  bottom: 0;                /* placerar den längst ner */
+  left: 0;
+  width: 100%;              /* full bredd */
   height: 80px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: #1a1a1a;
   padding: 10px 30px;
-  background-color: none;
+  z-index: 100;             /* ser till att den ligger ovanpå allt */
+  border-top: 1px solid #2b2b2b; /* ger en subtil linje */
 }
 
 .links a {
