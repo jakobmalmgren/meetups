@@ -1,0 +1,79 @@
+.profile {
+  width: 600px; 
+  height: 1000px;
+  background-color: #121212;
+  border-radius: 30px;
+  margin: 40px auto;
+  box-shadow: 0 0 25px rgba(79, 31, 31, 0.4);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+}
+
+
+.profile-card {
+  width: 100%;
+  height: 100%;
+  background-color: #1a1a1a;
+  border-radius: 20px;
+  padding: 40px 30px;
+  text-align: center;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+}
+
+.profile-img,
+.profile-icon {
+  width: 250px;
+  height: 200px;
+  border-radius: 50%;
+  margin-bottom: 15px;
+  background-color: #1a1a1a;
+  color: #cf8c22;
+}
+
+/* Namn */
+.profile-name {
+  font-family: 'Merriweather', serif;
+  color: white;
+  font-size: 1.6rem;
+  margin-bottom: 20px;
+}
+
+/* Meetup-lista */
+.meetups-section {
+  width: 100%;
+  text-align: left;
+  margin-top: 10px;
+}
+
+.meetups-section h2 {
+  color: #cf8c22;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  font-family: 'Merriweather', serif;
+}
+
+.meetups-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.meetups-section li {
+  background-color: #1a1a1a;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  color: white;
+  font-size: 0.95rem;
+}
+
+.no-meetups {
+  color: #888;
+  text-align: center;
+  margin-top: 20px;
+}
