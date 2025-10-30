@@ -1,5 +1,5 @@
 import "./Profile.css";
-import { FaUserCircle } from "react-icons/fa"; // fallback-ikon
+import { FaUserCircle } from "react-icons/fa";
 import Navbar from "../components/navbar/Navbar.jsx";
 
 // tillfällig mock-data (ersätts senare med backend-data)
@@ -15,7 +15,7 @@ const user = {
 export default function Profile() {
   return (
     <div className="profile">
-      <div className="profile-card">
+      <div className="profile-content">
         {user.image ? (
           <img src={user.image} alt="Profile" className="profile-img" />
         ) : (

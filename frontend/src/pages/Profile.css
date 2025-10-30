@@ -1,8 +1,6 @@
-
-/* Förhindra att globala regler överskriver bredd/höjd */
 .profile {
-  width: 600px !important;
-  height: 1000px !important;
+  width: 600px;
+  height: 1000px;
   background-color: #121212;
   border-radius: 30px;
   margin: 40px auto;
@@ -14,8 +12,7 @@
   overflow: hidden;
 }
 
-
-.profile-card {
+.profile-content {
   width: 100%;
   height: 100%;
   background-color: #1a1a1a;
@@ -23,15 +20,19 @@
   padding: 40px 30px;
   text-align: center;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; 
+  gap: 30x; 
 }
-
 
 .profile-img,
 .profile-icon {
-  width: 250px;
-  height: 250px;
+  width: 200px;
+  height: 200px;
   border-radius: 50%;
-  margin-bottom: 15px;
+  margin-bottom: 100px;
   background-color: #1a1a1a;
   color: #cf8c22;
 }
@@ -46,9 +47,9 @@
 
 /* Meetup-lista */
 .meetups-section {
-  width: 100%;
+  width: 80%;
   text-align: left;
-  margin-top: 10px;
+  margin-top: 0;
 }
 
 .meetups-section h2 {
