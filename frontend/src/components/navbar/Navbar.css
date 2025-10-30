@@ -35,6 +35,6 @@
 }
 
 .links a:hover {
-  color: #cf8c22; /* samma orange som din active-färg */
+  color: #cf8c22;
   transition: color 0.2s ease;
 }
