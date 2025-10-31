@@ -37,6 +37,9 @@ export const createReview = async (req, res, next) => {
       rating,
       review,
     });
+
+    await Meetup.findByIdAndUpdate(meetupId, { $push: { reviews: doc._id } });
+
     return res.status(201).json({ data: doc });
   } catch (err) {
     if (err?.code === 11000) {
