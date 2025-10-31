@@ -5,11 +5,12 @@ import Login from "./pages/Login.jsx";
 import Signup from "./pages/SignUp.jsx";
 import Layout from "./components/general-components/Layout.jsx";
 import "./App.css";
+import PopupLayout from "./components/popup-info-component/PopupLayout.jsx";
 
 function App() {
   return (
     <>
-      <Routes>
+      {/* <Routes>
         <Route
           path="/home"
           element={
@@ -42,13 +43,14 @@ function App() {
             </Layout>
           }
         />
-      </Routes>
+      </Routes> */}
       <div>
         {/* <Layout>
           <Home></Home>
           <Login></Login>
           <Profile></Profile>
         </Layout> */}
+        <PopupLayout></PopupLayout>
       </div>
     </>
   );

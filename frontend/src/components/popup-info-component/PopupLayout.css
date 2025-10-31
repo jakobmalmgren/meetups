@@ -1,0 +1,16 @@
+.popup-layout {
+  width: 400px;
+  height: 600px;
+  background-color: red;
+  padding: 15px;
+  border-radius: 5%;
+}
+.x {
+  font-size: 50px;
+}
+.popup-layout_img-wrapper {
+  width: 100%;
+}
+.popup-layout_img {
+  width: 100%;
+}
