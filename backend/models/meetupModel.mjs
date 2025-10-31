@@ -13,7 +13,7 @@ const meetupSchema = new mongoose.Schema(
     attendees: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
     reviews: [{ type: mongoose.Schema.Types.ObjectId, ref: "Review" }],
   },
-  { timestaps: true }
+  { timestamps: true }
 );
 
 export default mongoose.model("Meetup", meetupSchema);
