@@ -4,6 +4,7 @@ import cors from "cors";
 import connectDB from "./config/db.mjs";
 import userRouter from "./routes/userRoutes.mjs";
 import reviewRouter from "./routes/reviewRoute.mjs";
+import meetupRouter from "./routes/meetupRoutes.mjs";
 
 dotenv.config();
 
@@ -23,6 +24,8 @@ app.use(express.json());
 
 app.use("/api/users", userRouter);
 app.use("/api/reviews", reviewRouter);
+
+app.use("/api/meetups", meetupRouter);
 
 // Check för render
 app.get("/api", (req, res) => {
