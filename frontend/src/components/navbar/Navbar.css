@@ -4,30 +4,37 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-color: #1a1a1a;
+
   padding: 10px 30px;
-  border-top: 1px solid #2b2b2b;
 }
 
 .links a {
   color: white;
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: 700;
   margin-right: 40px;
   text-decoration: none;
-  font-family: 'Merriweather', serif;
-  font-size: x-large;
+  font-family: "Merriweather", serif;
+  font-size: 2rem;
 }
 
 .links a.active {
   color: #cf8c22;
 }
 
-.icon {
+.icon-navbar {
+  font-size: 2rem;
+  width: 2em !important;
+  height: 2em !important;
   color: white;
-  font-size: x-large;
+  background-color: #1a1a1a;
+  flex-shrink: 0;
   cursor: pointer;
   transition: color 0.2s ease;
+}
+
+.icon:hover {
+  color: #cf8c22;
 }
 
 .icon:hover {
