@@ -27,17 +27,17 @@
   width: 2em !important;
   height: 2em !important;
   color: white;
-  background-color: #1a1a1a;
+  background-color: #1e1e1e;
   flex-shrink: 0;
   cursor: pointer;
   transition: color 0.2s ease;
 }
 
-.icon:hover {
+.icon-navbar:hover {
   color: #cf8c22;
 }
 
-.icon:hover {
+.icon-navbar:hover {
   color: #cf8c22;
 }
 
