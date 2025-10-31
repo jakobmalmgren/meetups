@@ -1,20 +1,57 @@
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home.jsx";
 import Profile from "./pages/Profile.jsx";
+import Login from "./pages/Login.jsx";
+import Signup from "./pages/SignUp.jsx";
+import Layout from "./components/general-components/Layout.jsx";
+import "./App.css";
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/profile" element={<Profile />} />
-    </Routes>
+    <>
+      <Routes>
+        <Route
+          path="/home"
+          element={
+            <Layout>
+              <Home />
+            </Layout>
+          }
+        />
+        <Route
+          path="/"
+          element={
+            <Layout>
+              <Login />
+            </Layout>
+          }
+        />
+        <Route
+          path="/signup"
+          element={
+            <Layout>
+              <Signup />
+            </Layout>
+          }
+        />
+        <Route
+          path="/profile"
+          element={
+            <Layout>
+              <Profile />
+            </Layout>
+          }
+        />
+      </Routes>
+      <div>
+        {/* <Layout>
+          <Home></Home>
+          <Login></Login>
+          <Profile></Profile>
+        </Layout> */}
+      </div>
+    </>
   );
-import Login from "./components/signup-login/Login";
-import Signup from "./components/signup-login/SignUp";
-import Layout from "./components/signup-login/Layout.jsx";
-
-function App() {
-  return <></>;
 }
 
 export default App;

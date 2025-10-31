@@ -12,19 +12,9 @@
   overflow: hidden;
 }
 
-.home-card {
-  background-color: #1a1a1a;
-  border-radius: 20px;
-  padding: 40px 30px;
-  max-width: 700px;
-  height: 1000px;
-  text-align: center;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
-}
-
 .home-card h2 {
   padding-top: 5%;
-  font-family: 'Merriweather', serif;
+  font-family: "Merriweather", serif;
   color: #fff;
   margin-bottom: 0.5rem;
   font-size: 2.5rem;
@@ -32,7 +22,7 @@
 }
 
 .home-card h1 {
-  font-family: 'Merriweather', serif;
+  font-family: "Merriweather", serif;
   color: #fff;
   font-size: 4rem;
   font-weight: 700;
@@ -53,5 +43,5 @@
 .home-card img {
   width: 60%;
   border-radius: 10px;
-  border: rgb(255, 255, 255) 10px solid ;
+  border: rgb(255, 255, 255) 10px solid;
 }

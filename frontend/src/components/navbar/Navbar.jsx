@@ -7,13 +7,22 @@ export default function Navbar() {
   return (
     <nav className="navbar">
       <div className="links">
-        <NavLink to="/" className={({ isActive }) => (isActive ? "active" : "")}>
+        <NavLink
+          to="/home"
+          className={({ isActive }) => (isActive ? "active" : "")}
+        >
           Home
         </NavLink>
-        <NavLink to="/meetups" className={({ isActive }) => (isActive ? "active" : "")}>
+        <NavLink
+          to="/meetups"
+          className={({ isActive }) => (isActive ? "active" : "")}
+        >
           Meetups
         </NavLink>
-        <NavLink to="/profile" className={({ isActive }) => (isActive ? "active" : "")}>
+        <NavLink
+          to="/profile"
+          className={({ isActive }) => (isActive ? "active" : "")}
+        >
           Profile
         </NavLink>
       </div>

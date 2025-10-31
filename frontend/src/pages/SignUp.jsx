@@ -1,8 +1,9 @@
 import "./SignUp.css";
-import Icon from "./Icon.jsx";
-import InputField from "./InputField.jsx";
-import SignupLoginbtn from "./SignupLoginbtn.jsx";
-import { Link } from "react-router-dom";
+import Icon from "../components/signup-login/Icon.jsx";
+import InputField from "../components/signup-login/InputField.jsx";
+import SignupLoginbtn from "../components/signup-login/SignupLoginbtn.jsx";
+
+import { NavLink } from "react-router-dom";
 function Signup() {
   return (
     <section className="sign-up">
@@ -21,11 +22,14 @@ function Signup() {
         <h1 className="sign-up_sec-header">Sign up</h1>
         <InputField></InputField>
         <SignupLoginbtn>Sign up</SignupLoginbtn>
-        {/* <Link to="/login">Login</Link> */}
+
         <section className="sign-up_link-wrapper">
-          <a className="sign-up_link" href="">
-            Login
-          </a>
+          <NavLink
+            to="/"
+            className={({ isActive }) => (isActive ? "active" : "")}
+          >
+            login
+          </NavLink>
         </section>
       </section>
     </section>

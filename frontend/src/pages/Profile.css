@@ -1,4 +1,4 @@
-.profile {
+/* .profile {
   width: 600px;
   height: 1000px;
   background-color: #121212;
@@ -10,7 +10,7 @@
   justify-content: space-between;
   align-items: center;
   overflow: hidden;
-}
+} */
 
 .profile-content {
   width: 100%;
@@ -23,8 +23,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center; 
-  gap: 30x; 
+  justify-content: center;
+  gap: 30x;
 }
 
 .profile-img,
@@ -39,7 +39,7 @@
 
 /* Namn */
 .profile-name {
-  font-family: 'Merriweather', serif;
+  font-family: "Merriweather", serif;
   color: white;
   font-size: 1.6rem;
   margin-bottom: 20px;
@@ -56,7 +56,7 @@
   color: #cf8c22;
   font-size: 1.2rem;
   margin-bottom: 10px;
-  font-family: 'Merriweather', serif;
+  font-family: "Merriweather", serif;
 }
 
 .meetups-section ul {
