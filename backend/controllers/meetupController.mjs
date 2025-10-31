@@ -20,9 +20,15 @@ export const getMeetups = async (req, res) => {
 export const getMeetupById = async (req, res) => {
   try {
     const meetup = await Meetup.findById(req.params.id)
-      // Hämtar deltagares email och allt från reviews
       .populate("attendees", "email")
-      .populate("reviews");
+      .populate({
+        path: "reviews",
+        select: "rating review createdAt updatedAt user meetup",
+        options: { sort: { createdAt: -1 } },
+        populate: [
+          { path: "meetup", select: "title -_id" }, // bara title
+        ],
+      });
 
     if (!meetup)
       return res

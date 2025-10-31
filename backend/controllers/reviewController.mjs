@@ -38,6 +38,11 @@ export const createReview = async (req, res, next) => {
       review,
     });
 
+    await doc.populate([
+      { path: "meetup", select: "_id title" },
+      { path: "user", select: "_id email" },
+    ]);
+
     await Meetup.findByIdAndUpdate(meetupId, { $push: { reviews: doc._id } });
 
     return res.status(201).json({ data: doc });
