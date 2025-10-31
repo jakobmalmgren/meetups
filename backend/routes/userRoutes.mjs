@@ -1,10 +1,12 @@
 import { Router } from "express";
-import { signup } from "../controllers/userController.mjs";
-import { signupSchema } from "../validators/userValidator.mjs";
+import { login, signup } from "../controllers/userController.mjs";
+import { loginSchema, signupSchema } from "../validators/userValidator.mjs";
 import { validate } from "../middlewares/validateBody.mjs";
 
 const router = Router();
 
 router.post("/signup", validate(signupSchema), signup);
+
+router.post("/login", validate(loginSchema), login);
 
 export default router;
