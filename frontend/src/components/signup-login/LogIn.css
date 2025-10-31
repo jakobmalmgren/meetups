@@ -1,13 +1,15 @@
-.login {
-  /* background-color: red; */
+/* .login {
   background-color: #1e1e1e;
   border: 2px solid white;
 
-  width: 600px;
-  height: 1000px;
-  /* display: flex;
-  flex-direction: column; */
-}
+  width: 100vw;
+  max-width: 600px;
+  padding: 20px;
+
+  min-height: 100vh;
+  height: auto;
+} */
+
 .login_upper-wrapper {
   /* background-color: gold; */
   width: 100%;
@@ -29,7 +31,7 @@
   font-family: Merriweather;
   font-weight: 900;
   font-style: Black;
-  font-size: 64px;
+  font-size: 45px;
 }
 .login_span {
   color: #cf8c22;

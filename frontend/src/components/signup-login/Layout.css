@@ -1,0 +1,23 @@
+/* .layout {
+  background-color: #1e1e1e;
+  border: 2px solid white;
+  width: 100vw;
+  max-width: 600px;
+  padding: 20px;
+  min-height: 100vh;
+  height: auto;
+  height: 100vh;
+} */
+
+.layout {
+  background-color: #1e1e1e;
+  border: 2px solid white;
+
+  width: 100vw;
+  max-width: 600px;
+  padding: 20px;
+
+  /* height: auto; */
+
+  height: 100vh;
+}
