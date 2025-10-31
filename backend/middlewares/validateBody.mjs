@@ -1,4 +1,4 @@
-export const validate = (schema) => (req, res, next) => {
+export const validateBody = (schema) => (req, res, next) => {
   const { value, error } = schema.validate(req.body, {
     abortEarly: true,
     stripUnknown: true,

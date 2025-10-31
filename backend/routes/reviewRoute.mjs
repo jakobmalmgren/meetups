@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { validateBody, validateBody } from "../middlewares/validateBody.mjs";
+import { validateBody } from "../middlewares/validateBody.mjs";
 import { createReview } from "../controllers/reviewController.mjs";
 import { paramsSchema, reviewSchema } from "../validators/reviewValidator.mjs";
 import { validateParams } from "../middlewares/validateParams.mjs";
@@ -7,7 +7,7 @@ import { validateParams } from "../middlewares/validateParams.mjs";
 const router = Router();
 
 router.post(
-  "/review",
+  "/:id",
   validateParams(paramsSchema),
   validateBody(reviewSchema),
   createReview
