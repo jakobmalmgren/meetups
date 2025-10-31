@@ -12,3 +12,7 @@ body {
   background-color: #1e1e1e;
   width: 100%;
 }
+
+a {
+  text-decoration: none;
+}
