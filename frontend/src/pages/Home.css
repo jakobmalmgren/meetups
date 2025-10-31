@@ -3,8 +3,11 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #1e1e1e;
-  height: 100%;
+  background-color: #1e1e1e; /* tillbaka till originalbakgrund */
+  height: 100%;              /* fyller ytan som body skapar */
+  width: 100%;
+  position: relative;
+  overflow: hidden;
 }
 
 .home-card {
@@ -13,7 +16,7 @@
   justify-content: center;
   align-items: center;
   height: 80%;
-  padding: 2rem;
+  padding: 6rem;
   width: 90%;
   margin: 2rem;
   padding-bottom: 60%;
@@ -26,11 +29,10 @@
   padding-top: 5%;
   font-family: "Merriweather", serif;
   color: #fff;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.1rem;
   font-size: 2.5rem;
   font-weight: 400;
 }
-
 
 .home-card h1 {
   display: flex;
@@ -45,7 +47,7 @@
 }
 
 .home-card h1 span {
-    display: flex;
+  display: flex;
   justify-content: center;
   align-items: center;
   color: #cf8c22;
@@ -66,4 +68,21 @@
   align-items: center;
   width: 100%;
   border: rgb(255, 255, 255) 10px solid;
+}
+
+/* --- LOGGANS POSITION I HÖRNET --- */
+.icon-corner {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  z-index: 100;
+  /* ---- storlek på loggan ---- */
+  width: 100px;
+  height: 100px; 
+  /* centrera loggan i sin ruta */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  transform-origin: top right;
 }
