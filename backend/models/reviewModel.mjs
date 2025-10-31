@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const { Schema } = mongoose;
 
-const reviewSchema = new Schema(
+const UserReviewSchema = new Schema(
   {
     meetup: { type: Schema.Types.ObjectId, ref: "Meetup", required: true },
     user: { type: Schema.Types.ObjectId, ref: "User", required: true },
@@ -16,13 +16,13 @@ const reviewSchema = new Schema(
 
     review: {
       type: String,
-      minlength: 3,
+      minlength: 8,
       maxlength: 300,
       trim: true,
-      required: true,
     },
   },
   { timestamps: true }
 );
+UserReviewSchema.index({ meetup: 1, user: 1 }, { unique: true });
 
-export default mongoose.model("Review", reviewSchema);
+export default mongoose.model("Review", UserReviewSchema);
