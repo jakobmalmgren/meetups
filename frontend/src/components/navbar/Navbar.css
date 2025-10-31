@@ -6,7 +6,6 @@
   align-items: center;
 
   padding: 10px 30px;
- 
 }
 
 .links a {
@@ -15,7 +14,7 @@
   font-weight: 700;
   margin-right: 40px;
   text-decoration: none;
-  font-family: 'Merriweather', serif;
+  font-family: "Merriweather", serif;
   font-size: 2rem;
 }
 
@@ -23,7 +22,7 @@
   color: #cf8c22;
 }
 
-.icon {
+.icon-navbar {
   font-size: 2rem;
   width: 2em !important;
   height: 2em !important;
@@ -46,4 +45,3 @@
   color: #cf8c22;
   transition: color 0.2s ease;
 }
-

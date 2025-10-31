@@ -26,7 +26,7 @@ export default function Navbar() {
           Profile
         </NavLink>
       </div>
-      <FaSignOutAlt className="icon" />
+      <FaSignOutAlt className="icon-navbar" />
     </nav>
   );
 }
