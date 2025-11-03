@@ -9,10 +9,17 @@ export const login = async (req, res, next) => {
 
     const user = await User.findOne({ email }).select("+password");
     if (!user)
-      return res.status(401).json({ error: "Wrong email or password" });
+      return res.status(401).json({
+        success: false,
+        error: "Wrong email or password",
+      });
 
     const ok = await bcrypt.compare(password, user.password);
-    if (!ok) return res.status(401).json({ error: "Wrong email or password" });
+    if (!ok)
+      return res.status(401).json({
+        success: false,
+        error: "Wrong email or password",
+      });
 
     const token = signJwt({ sub: user.id });
 
