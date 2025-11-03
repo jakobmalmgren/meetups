@@ -1,21 +1,20 @@
 import "./Meetups.css";
-import { useState, useEffect } from "react";
-import { FaInfoCircle } from "react-icons/fa"; // En passande ikon för "mer info"
+import { useState, useEffect, useMemo } from "react"; 
+import { FaInfoCircle } from "react-icons/fa";
 import Navbar from "../components/navbar/Navbar.jsx";
 import SmallIcon from "../components/general-components/SmallIcon.jsx";
-import { getAllMeetups } from "../services/meetupService.js"; // <-- Importera datan!
+import { getAllMeetups } from "../services/meetupService.js";
 
 export default function Meetups() {
-  // State för datan
   const [meetups, setMeetups] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   // State för filter-värden
-  const [locationFilter, setLocationFilter] = useState(""); 
+  const [searchQuery, setSearchQuery] = useState("");
+  const [locationFilter, setLocationFilter] = useState("");
   const [dateFilter, setDateFilter] = useState("");
   const [categoryFilter, setCategoryFilter] = useState("");
 
-  // Hämta data när komponenten laddas
   useEffect(() => {
     const loadMeetups = async () => {
       try {
@@ -29,39 +28,71 @@ export default function Meetups() {
     };
 
     loadMeetups();
-  }, []); // Tom array = körs bara en gång
+  }, []);
 
   
+  const filteredMeetups = useMemo(() => {
+    let processedMeetups = [...meetups];
+
+    // 1. Filtrera på söktitel
+    if (searchQuery) {
+      processedMeetups = processedMeetups.filter((m) =>
+        m.title.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+    }
+
+    // 2. Sortera på datum
+    if (dateFilter === "newest") {
+      processedMeetups.sort((a, b) => new Date(b.date) - new Date(a.date));
+    } else if (dateFilter === "oldest") {
+      processedMeetups.sort((a, b) => new Date(a.date) - new Date(b.date));
+    }
+
+    // 3. Sortera på plats (A-Ö)
+    if (locationFilter === "a-z") {
+      processedMeetups.sort((a, b) => a.location.localeCompare(b.location));
+    }
+    
+    // 4. Sortera på kategori (A-Ö)
+    if (categoryFilter === "a-z") {
+      processedMeetups.sort((a, b) => a.category.localeCompare(b.category));
+    }
+
+    return processedMeetups;
+  }, [meetups, searchQuery, locationFilter, dateFilter, categoryFilter]);
+
 
   const handleOpenDetails = (meetup) => {
     console.log("Opening details for:", meetup.title);
-    // TODO: Öppna popup-modalen här och skicka med 'meetup'-objektet
-    // t.ex. openMeetupModal(meetup);
   };
 
 
   return (
-    <div className="meetups"> {/* Huvud-wrapper med sidans namn */}
+    <div className="meetups">
       <div className="icon-corner">
         <SmallIcon />
       </div>
 
-      {/* Centrala innehållet */}
       {isLoading ? (
-        // Visar laddningsmeddelande PÅ SAMMA PLATS som innehållet
         <div className="meetups-content">
           <p style={{ color: "white" }}>Loading meetups...</p>
         </div>
       ) : (
-        // Visar det faktiska innehållet när laddningen är klar
         <div className="meetups-content">
+          <div className="meetups-header">
+            <h1>Find Your Next Event</h1>
+            <p>Explore, filter, and join our community meetups.</p>
+          </div>
 
-          {/* SÖK-SEKTION */}
           <div className="search-section">
+
+            {/* Koppla sökfältet till state */}
             <input
               type="text"
               placeholder="Search by title..."
               className="search-input"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
             />
             <div className="filter-controls">
               <select 
@@ -97,17 +128,22 @@ export default function Meetups() {
             </div>
           </div>
           
-          {/* LIST-SEKTION */}
           <div className="meetups-section">
             <h2>UPCOMING MEETUPS</h2>
             <div className="meetups-box">
-              {meetups.length > 0 ? (
+          
+              {filteredMeetups.length > 0 ? (
                 <ul>
-                  {meetups.map((m) => (
+                  {filteredMeetups.map((m) => (
                     <li key={m.id}>
                       <div className="meetup-details">
                         <span className="meetup-title">{m.title}</span>
-                        <span className="meetup-date">{m.date}</span>
+                        
+                        <div className="meetup-sub-details">
+                          <span className="meetup-date">{m.date}</span>
+                          <span className="meetup-location">{m.location}</span>
+                          <span className="meetup-category">{m.category}</span>
+                        </div>
                       </div>
                       
                       <div className="meetup-actions">
@@ -123,7 +159,7 @@ export default function Meetups() {
                   ))}
                 </ul>
               ) : (
-                <p className="no-meetups">No meetups found.</p>
+                <p className="no-meetups">No meetups found matching your criteria.</p>
               )}
             </div>
           </div>

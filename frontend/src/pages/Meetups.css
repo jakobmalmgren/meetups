@@ -10,13 +10,13 @@
   overflow: hidden;
 }
 
-.meetups-content { /* Ändrad från .profile-content */
+.meetups-content { 
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   height: 80%;
-  padding: 6rem;
+  padding: 6rem 3rem 3rem 3rem; 
   width: 90%;
   margin: 2rem;
   overflow-y: auto;
@@ -29,7 +29,8 @@
 
 .meetups-section {
   width: 100%;
-  padding-top: 10%;
+  /* VIKTIG ÄNDRING: 10% var för mycket, ändrat till 2rem */
+  padding-top: 2rem; 
   height: auto;
   text-align: left;
   max-width: 800px; 
@@ -106,11 +107,6 @@
   text-overflow: ellipsis;
   font-weight: bold;
   flex: 1;
-}
-
-.meetup-details .meetup-date {
-  font-size: 0.8rem; 
-  color: #aaa;
 }
 
 .meetup-actions {
@@ -209,4 +205,47 @@
 .action-btn.info-btn:hover {
   color: #1e1e1e;
   background-color: #cf8c22;
+}
+
+.meetup-sub-details {
+  display: flex;
+  flex-wrap: wrap; 
+  gap: 6px 12px;
+  margin-top: 5px; 
+  font-size: 0.8rem; 
+}
+
+.meetup-sub-details .meetup-date {
+  color: #aaa;
+}
+
+.meetup-sub-details .meetup-location {
+  color: #cf8c22;
+  font-style: italic;
+}
+
+.meetup-sub-details .meetup-category {
+  color: #ddd;
+  font-weight: 500;
+}
+
+.meetups-header {
+  width: 100%;
+  max-width: 800px; 
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.meetups-header h1 {
+  font-family: "Merriweather", serif;
+  font-size: 2.5rem;
+  color: #cf8c22;
+  margin-bottom: 0.5rem;
+  font-weight: 400;
+}
+
+.meetups-header p {
+  font-size: 1.1rem;
+  color: #ccc;
+  font-style: italic;
 }
