@@ -3,8 +3,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #1e1e1e; /* tillbaka till originalbakgrund */
-  height: 100%;              /* fyller ytan som body skapar */
+  background-color: #1e1e1e;
+  height: 100%;              
   width: 100%;
   position: relative;
   overflow: hidden;
@@ -70,19 +70,15 @@
   border: rgb(255, 255, 255) 10px solid;
 }
 
-/* --- LOGGANS POSITION I HÖRNET --- */
 .icon-corner {
   position: absolute;
   top: 15px;
   right: 15px;
   z-index: 100;
-  /* ---- storlek på loggan ---- */
   width: 100px;
   height: 100px; 
-  /* centrera loggan i sin ruta */
   display: flex;
   justify-content: center;
   align-items: center;
-
   transform-origin: top right;
 }
