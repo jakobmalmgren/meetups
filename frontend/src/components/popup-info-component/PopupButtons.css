@@ -1,0 +1,13 @@
+.popup-btn {
+  width: 140px;
+  padding: 10px 20px;
+  border-radius: 10px;
+  color: white;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.popup-btn:hover {
+  cursor: pointer;
+}

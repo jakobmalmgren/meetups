@@ -1,0 +1,84 @@
+.home {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #1e1e1e;
+  height: 100%;              
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.home-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 80%;
+  padding: 6rem;
+  width: 90%;
+  margin: 2rem;
+  padding-bottom: 60%;
+}
+
+.home-card h2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 5%;
+  font-family: "Merriweather", serif;
+  color: #fff;
+  margin-bottom: 0.1rem;
+  font-size: 2.5rem;
+  font-weight: 400;
+}
+
+.home-card h1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Merriweather", serif;
+  color: #fff;
+  font-size: 4rem;
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+  padding-bottom: 10%;
+}
+
+.home-card h1 span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #cf8c22;
+}
+
+.home-card p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  color: #ccc;
+  margin-bottom: 1.5rem;
+}
+
+.home-card img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  border: rgb(255, 255, 255) 10px solid;
+}
+
+.icon-corner {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  z-index: 100;
+  width: 100px;
+  height: 100px; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform-origin: top right;
+}

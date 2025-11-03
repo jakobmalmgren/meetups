@@ -1,0 +1,54 @@
+.sign-up_upper-wrapper {
+  /* background-color: gold; */
+  width: 100%;
+  height: 40%;
+}
+.sign-up_lower-wrapper {
+  width: 100%;
+  height: 40%;
+  /* background-color: pink; */
+}
+.sign-up_header-wrapper {
+  /* background-color: green; */
+  height: 20%;
+}
+.sign-up_header {
+  /* padding-top: 15px; */
+  text-align: center;
+  /* background-color: grey; */
+  font-family: Merriweather;
+  font-weight: 900;
+  font-style: Black;
+  font-size: 45px;
+}
+.sign-up_span {
+  color: #cf8c22;
+}
+.sign-up_sec-header {
+  font-family: Merriweather;
+  font-weight: 700;
+  font-style: Bold;
+  font-size: 20px;
+  line-height: 150%;
+  letter-spacing: -2.2%;
+  color: white;
+}
+.sign-up_link {
+  text-align: end;
+}
+a {
+  color: #cf8c22;
+}
+.sign-up_icon-wrapper {
+  height: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* background-color: blueviolet; */
+}
+.sign-up_link-wrapper {
+  /* background-color: aqua; */
+  display: flex;
+  justify-content: end;
+  margin-top: 10px;
+}

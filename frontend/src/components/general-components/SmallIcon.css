@@ -1,0 +1,49 @@
+.small-icon_icon-wrapper {
+  transform: scale(0.2);
+  width: 339px;
+  height: 339px;
+}
+
+.small-icon_icon {
+  width: 339px;
+  height: 339px;
+  background-color: black;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.small-icon_inner-circle {
+  width: 254px;
+  height: 254px;
+  border-radius: 50%;
+  border: 4px solid #cf8c22;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.small-icon_inner-circle_two {
+  width: 132px;
+  height: 132px;
+  border-radius: 50%;
+  border: 2px solid #cf8c22;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.small-icon_icon_text {
+  font-family: Merriweather;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 48px;
+  line-height: 100%;
+  letter-spacing: 3%;
+}
+
+.m {
+  color: white;
+}
+.z {
+  color: #cf8c22;
+}
