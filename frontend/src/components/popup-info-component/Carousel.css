@@ -1,0 +1,19 @@
+.carousel-header {
+  font-size: 12px;
+}
+.carousel-review {
+  font-size: 10px;
+}
+.carousel-user {
+  font-size: 12px;
+}
+/* .slick-dots {
+  position: absolute;
+} */
+.slick-dots {
+  position: relative !important;
+  bottom: auto !important;
+  left: auto !important;
+  right: auto !important;
+  margin-top: 10px;
+}

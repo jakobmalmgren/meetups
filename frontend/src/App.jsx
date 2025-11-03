@@ -6,7 +6,7 @@ import Signup from "./pages/SignUp.jsx";
 import Layout from "./components/general-components/Layout.jsx";
 import "./App.css";
 import PopupLayout from "./components/popup-info-component/PopupLayout.jsx";
-
+import BlurrBackground from "./components/general-components/BlurrBackground.jsx";
 function App() {
   return (
     <>
@@ -51,6 +51,8 @@ function App() {
           <Profile></Profile>
         </Layout> */}
         <PopupLayout></PopupLayout>
+        {/* ska få in blurr */}
+        {/* <BlurrBackground></BlurrBackground> */}
       </div>
     </>
   );

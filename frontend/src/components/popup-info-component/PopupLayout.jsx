@@ -5,6 +5,7 @@ import image from "../../assets/meet.png";
 import PopupTextArea from "./PopupTextArea";
 import { FaArrowCircleDown } from "react-icons/fa";
 import { useState } from "react";
+import Carousel from "./Carousel";
 
 export default function PopupLayout() {
   const [open, setOpen] = useState(false);
@@ -28,6 +29,10 @@ export default function PopupLayout() {
         <p className="popup-layout_amount-space">Antal platser: 40</p>
         <p className="popup-layout_amout-signup">Antal anmälda: 10</p>
       </section>
+      <section className="popup-layout_carousel">
+        <Carousel></Carousel>
+      </section>
+
       <section className="popup-layout_btns">
         <PopupButtons color=" #CF8C22">Book</PopupButtons>
         <PopupButtons onClick={() => setOpen((prev) => !prev)} color=" #CF8C22">
