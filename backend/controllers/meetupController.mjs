@@ -124,3 +124,57 @@ export const unregisterMeetup = async (req, res) => {
     });
   }
 };
+
+// Sökfunktion med filtrering och sortering
+export const searchForMeetup = async (req, res) => {
+  try {
+    const { title, category, location, from, to, sortBy, order } = req.query;
+
+    // Skapa filterobjekt
+    const filter = {};
+
+    if (title) {
+      filter.$or = [
+        { title: { $regex: new RegExp(title, "i") } },
+        { description: { $regex: new RegExp(title, "i") } },
+      ];
+    }
+
+    if (category) {
+      filter.category = { $regex: new RegExp(category, "i") };
+    }
+
+    if (location) {
+      filter.location = { $regex: new RegExp(location, "i") };
+    }
+    // gte = greater than or equal to och lte = less than
+    if (from || to) {
+      filter.date = {};
+      if (from) filter.date.$gte = new Date(from);
+      if (to) filter.date.$lte = new Date(to);
+    }
+
+    // Sorteringslogik
+    const sortOptions = {};
+    if (sortBy) {
+      sortOptions[sortBy] = order === "asc" ? 1 : -1;
+    } else {
+      sortOptions.date = -1;
+    }
+
+    // Hämta meetups filter och sortera
+    const meetups = await Meetup.find(filter).sort(sortOptions);
+
+    // Lägger till antal lediga platser
+    const meetupsWithAvailable = meetups.map(addAvailableSpots);
+
+    res.status(200).json(meetupsWithAvailable);
+  } catch (error) {
+    console.error("Error trying to search for meetups:", error);
+    res.status(500).json({
+      success: false,
+      message: "Error trying to search for meetups",
+      error: error.message,
+    });
+  }
+};

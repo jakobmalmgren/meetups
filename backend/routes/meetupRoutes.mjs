@@ -7,11 +7,13 @@ import {
   getMeetupById,
   registerMeetup,
   unregisterMeetup,
+  searchForMeetup,
 } from "../controllers/meetupController.mjs";
 
 const router = express.Router();
 
 router.get("/", getMeetups);
+router.get("/search", searchForMeetup);
 router.get("/:id", validateParams(meetupIdSchema), getMeetupById);
 router.post(
   "/:id/register",
