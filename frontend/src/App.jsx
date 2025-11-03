@@ -10,7 +10,7 @@ import BlurrBackground from "./components/general-components/BlurrBackground.jsx
 function App() {
   return (
     <>
-      {/* <Routes>
+      <Routes>
         <Route
           path="/home"
           element={
@@ -43,17 +43,14 @@ function App() {
             </Layout>
           }
         />
-      </Routes> */}
-      <div>
-        {/* <Layout>
+      </Routes>
+      {/* <div>
+        <Layout>
           <Home></Home>
           <Login></Login>
           <Profile></Profile>
-        </Layout> */}
-        <PopupLayout></PopupLayout>
-        {/* ska få in blurr */}
-        {/* <BlurrBackground></BlurrBackground> */}
-      </div>
+        </Layout>
+      </div> */}
     </>
   );
 }
