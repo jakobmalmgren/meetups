@@ -1,0 +1,66 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: #2a2a2a;
+  padding: 2rem;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+  border: 1px solid #cf8c22;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+.modal-text {
+  color: white;
+  font-family: "Merriweather", serif;
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 1rem;
+}
+
+.modal-btn {
+  font-family: "Merriweather", serif;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 100px;
+}
+
+.modal-btn-back {
+  background-color: #444;
+  color: white;
+}
+
+.modal-btn-back:hover {
+  background-color: #555;
+}
+
+.modal-btn-confirm {
+  background-color: #d9534f; /* En röd färg för "confirm cancel" */
+  color: white;
+}
+
+.modal-btn-confirm:hover {
+  background-color: #c9302c;
+}
