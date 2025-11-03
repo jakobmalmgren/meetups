@@ -6,7 +6,6 @@ import Navbar from "../components/navbar/Navbar.jsx";
 export default function Home() {
   return (
     <div className="home">
-      {/* Loggan i övre högra hörnet av hela sidan */}
       <div className="icon-corner">
         <SmallIcon />
       </div>

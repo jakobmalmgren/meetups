@@ -3,6 +3,7 @@ import Home from "./pages/Home.jsx";
 import Profile from "./pages/Profile.jsx";
 import Login from "./pages/Login.jsx";
 import Signup from "./pages/SignUp.jsx";
+import Meetups from "./pages/Meetups.jsx";
 import Layout from "./components/general-components/Layout.jsx";
 import "./App.css";
 import PopupLayout from "./components/popup-info-component/PopupLayout.jsx";
@@ -40,6 +41,14 @@ function App() {
           element={
             <Layout>
               <Profile />
+            </Layout>
+          }
+                  />
+        <Route
+          path="/meetups"
+          element={
+            <Layout>
+              <Meetups />
             </Layout>
           }
         />
