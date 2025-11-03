@@ -17,6 +17,7 @@ export const login = async (req, res, next) => {
     const token = signJwt({ sub: user.id });
 
     return res.json({
+      success: true,
       message: "successfully logged in",
       user: { id: user.id, email: user.email },
       token,
@@ -36,12 +37,16 @@ export const signup = async (req, res, next) => {
     const user = await User.create({ email, password: hash });
 
     return res.status(201).json({
+      success: true,
       message: "User created successfully",
       user: { id: user.id, email: user.email },
     });
   } catch (err) {
     if (err?.code === 11000 || err?.codeName === "DuplicateKey") {
-      return res.status(409).json({ error: "Email already regist.." });
+      return res.status(409).json({
+        success: false,
+        error: "Email already regist..",
+      });
     }
     return next(err);
   }
