@@ -2,7 +2,7 @@ import { Router } from "express";
 import { login, signup } from "../controllers/userController.mjs";
 import { loginSchema, signupSchema } from "../validators/userValidator.mjs";
 import { validateBody } from "../middlewares/validateBody.mjs";
-import { validateLoginBody } from "../middlewares/validateParams.mjs";
+import { validateLoginBody } from "../middlewares/validateBody.mjs";
 
 const router = Router();
 
