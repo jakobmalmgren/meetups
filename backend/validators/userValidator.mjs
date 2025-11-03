@@ -3,7 +3,7 @@ import Joi from "joi";
 export const signupSchema = Joi.object({
   email: Joi.string()
     .email({
-      tlds: { allow: ["com", "se", "net", "org"] },
+      tlds: { allow: ["com", "se", "net", "org"] }, // tillåter endast dessa..
       minDomainSegments: 2,
     })
     .trim()
