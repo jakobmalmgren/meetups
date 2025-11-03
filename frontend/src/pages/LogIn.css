@@ -64,3 +64,9 @@
 a {
   color: #cf8c22;
 }
+
+.login-error {
+  color: red;
+  margin-top: 10px;
+  font-size: 0.9rem;
+}
