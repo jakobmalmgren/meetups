@@ -73,7 +73,7 @@
   background-color: #1a1a1a;
   padding: 10px;
   scrollbar-width: thin;
-  scrollbar-color: #cf8c22 #2a2a2a;
+  scrollbar-color: #cf8c22 #2a2a1a;
 }
 
 .meetups-box::-webkit-scrollbar {
@@ -115,11 +115,6 @@
   flex: 1;
 }
 
-.meetup-date {
-  color: #cf8c22;
-  font-size: 0.9rem;
-}
-
 .no-meetups {
   color: #888;
   text-align: center;
@@ -156,11 +151,6 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-}
-
-.meetup-details .meetup-date {
-  font-size: 0.8rem; 
-  color: #aaa;
 }
 
 .meetup-actions {
@@ -201,17 +191,24 @@
   background-color: #d9534f;
 }
 
-.history-section .meetups-box li {
-  flex-direction: row; 
-  justify-content: space-between;
+.meetup-sub-details {
+  display: flex;
+  flex-wrap: wrap; 
+  gap: 6px 12px;
+  margin-top: 5px; 
+  font-size: 0.8rem; 
 }
 
-.history-section .meetups-box .meetup-title {
-  white-space: normal;
-  overflow: visible;
-  text-overflow: unset;
+.meetup-sub-details .meetup-date {
+  color: #aaa;
 }
-.history-section .meetups-box .meetup-date {
-  font-size: 0.9rem;
+
+.meetup-sub-details .meetup-location {
   color: #cf8c22;
+  font-style: italic;
+}
+
+.meetup-sub-details .meetup-category {
+  color: #ddd;
+  font-weight: 500;
 }
