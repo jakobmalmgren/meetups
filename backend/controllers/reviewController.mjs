@@ -21,15 +21,15 @@ export const createReview = async (req, res, next) => {
       return res.status(404).json({ error: "Meetup not found.." });
     }
 
-    /*     const attended =
+    const attended =
       Array.isArray(meetupDoc.attendees) &&
-      meetupDoc.attendees.some((a) => String(a) === String(userId)); */
+      meetupDoc.attendees.some((a) => String(a) === String(userId));
 
-    /*   if (!attended) {
+    if (!attended) {
       return res
         .status(403)
         .json({ error: "Cant leave a review if u did not attend" });
-    } */
+    }
 
     const doc = await Review.create({
       meetup: meetupDoc._id,
