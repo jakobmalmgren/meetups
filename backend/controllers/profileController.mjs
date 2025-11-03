@@ -14,5 +14,5 @@ export const getMyProfile = async (req, res, next) => {
     const include = (req.query.include ?? "registered, history, reviews").split(
       ","
     );
-  } catch {}
+  } catch {} // test
 };
