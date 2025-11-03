@@ -2,7 +2,10 @@ import Joi from "joi";
 
 export const signupSchema = Joi.object({
   email: Joi.string()
-    .email({ tlds: { allow: false } })
+    .email({
+      tlds: { allow: ["com", "se", "net", "org"] },
+      mainDomainSegments: 2,
+    })
     .trim()
     .lowercase()
     .required()
