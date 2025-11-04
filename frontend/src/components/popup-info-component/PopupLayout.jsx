@@ -1,7 +1,6 @@
 import "./PopupLayout.css";
 import PopupButtons from "./PopupButtons";
 import { FaCircleXmark } from "react-icons/fa6";
-import image from "../../assets/meet.png";
 import PopupTextArea from "./PopupTextArea";
 import { FaArrowCircleDown } from "react-icons/fa";
 import { useState } from "react";
@@ -12,9 +11,6 @@ export default function PopupLayout() {
   return (
     <div className="popup-layout">
       <FaCircleXmark className="x"></FaCircleXmark>
-      <section className="popup-layout_img-wrapper">
-        <img className="popup-layout_img" src={image} alt="" />
-      </section>
       <section className="popup-layout_section-info">
         <h1 className="popup-layout_header">Event: alex event</h1>
         <p className="popup-layout_time">
