@@ -43,7 +43,7 @@ function App() {
               <Profile />
             </Layout>
           }
-                  />
+        />
         <Route
           path="/meetups"
           element={
@@ -54,11 +54,7 @@ function App() {
         />
       </Routes>
       {/* <div>
-        <Layout>
-          <Home></Home>
-          <Login></Login>
-          <Profile></Profile>
-        </Layout>
+        <PopupLayout></PopupLayout>
       </div> */}
     </>
   );
