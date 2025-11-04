@@ -5,6 +5,7 @@ import connectDB from "./config/db.mjs";
 import userRouter from "./routes/userRoutes.mjs";
 import reviewRouter from "./routes/reviewRoute.mjs";
 import meetupRouter from "./routes/meetupRoutes.mjs";
+import profileRouter from "./routes/profileRoute.mjs";
 
 dotenv.config();
 
@@ -26,7 +27,7 @@ app.use("/api/users", userRouter);
 app.use("/api/reviews", reviewRouter);
 
 app.use("/api/meetups", meetupRouter);
-
+app.use("/api/profile", profileRouter);
 // Check för render
 app.get("/api", (req, res) => {
   res.send("Lala,lal");
