@@ -1,9 +1,13 @@
 import { Router } from "express";
 import { protect } from "../middlewares/auth.mjs";
-import { getMyProfile } from "../controllers/profileController.mjs";
+import {
+  getProfile,
+  markMeetupCompleteForUser,
+} from "../controllers/profileController.mjs";
 
 const router = Router();
 
-router.get("/", protect, getMyProfile);
+router.get("/", protect, getProfile);
+router.post("/complete/:meetupId", protect, markMeetupCompleteForUser);
 
 export default router;

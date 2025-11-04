@@ -6,18 +6,22 @@ const userSchema = new mongoose.Schema(
   {
     email: {
       type: String,
-      required: true,
       unique: true,
+      required: true,
       lowercase: true,
       trim: true,
     },
     password: { type: String, required: true, minlength: 8, select: false },
 
-    registeredMeetups: {
-      type: [{ type: Schema.Types.ObjectId, ref: "Meetup" }],
-      default: [],
-    },
+    registeredMeetups: [
+      { type: mongoose.Schema.Types.ObjectId, ref: "Meetup" },
+    ],
+
+    history: [{ type: mongoose.Schema.Types.ObjectId, ref: "Meetup" }],
+
+    username: { type: String },
   },
+
   { timestamps: true }
 );
 
