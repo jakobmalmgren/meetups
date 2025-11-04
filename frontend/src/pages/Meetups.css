@@ -1,0 +1,251 @@
+.meetups {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: #1e1e1e;
+  height: 100%;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.meetups-content { 
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  height: 80%;
+  padding: 6rem 3rem 3rem 3rem; 
+  width: 90%;
+  margin: 2rem;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.meetups-content::-webkit-scrollbar {
+  display: none;
+}
+
+.meetups-section {
+  width: 100%;
+  /* VIKTIG ÄNDRING: 10% var för mycket, ändrat till 2rem */
+  padding-top: 2rem; 
+  height: auto;
+  text-align: left;
+  max-width: 800px; 
+}
+
+.meetups-section h2 {
+  padding-top: 2px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #cf8c22;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  font-family: "Merriweather", serif;
+}
+
+/* Scrollbox (kopierad från Profile.css) */
+.meetups-box {
+  height: 350px; 
+  max-height: 50vh;
+  overflow-y: auto;
+  background-color: #1a1a1a;
+  padding: 10px;
+  scrollbar-width: thin;
+  scrollbar-color: #cf8c22 #2a2a2a;
+}
+
+.meetups-box::-webkit-scrollbar {
+  width: 6px;
+}
+.meetups-box::-webkit-scrollbar-track {
+  background: #2a2a2a;
+}
+.meetups-box::-webkit-scrollbar-thumb {
+  background-color: #cf8c22;
+  border-radius: 3px;
+}
+
+.meetups-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.meetups-section li {
+  background-color: #2a2a2a;
+  border-radius: 10px;
+  padding: 12px 15px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  font-size: 0.95rem;
+  transition: background-color 0.2s ease;
+}
+
+.meetups-section li:hover {
+  background-color: #353535;
+}
+
+.meetup-details {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin-right: 10px;
+  overflow: hidden;
+}
+
+.meetup-details .meetup-title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: bold;
+  flex: 1;
+}
+
+.meetup-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.action-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  font-size: 1.2rem;
+  transition: all 0.2s ease;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.action-btn:hover {
+  background-color: #444;
+}
+
+.no-meetups {
+  color: #888;
+  text-align: center;
+  margin-top: 20px;
+  font-style: italic;
+}
+
+.icon-corner {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  z-index: 100;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform-origin: top right;
+}
+
+.search-section {
+  width: 100%;
+  max-width: 800px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 12px;
+  background-color: #2a2a2a;
+  border: 1px solid #444;
+  border-radius: 5px;
+  color: white;
+  font-size: 1rem;
+  font-family: 'Arial', sans-serif;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #cf8c22;
+}
+
+.filter-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+  width: 100%;
+}
+
+.filter-select {
+  width: 100%;
+  padding: 10px;
+  background-color: #2a2a2a;
+  border: 1px solid #444;
+  border-radius: 5px;
+  color: #ccc;
+  font-size: 0.8rem;
+}
+
+.filter-select:focus {
+  outline: none;
+  border-color: #cf8c22;
+}
+
+.action-btn.info-btn {
+  color: #cf8c22;
+}
+
+.action-btn.info-btn:hover {
+  color: #1e1e1e;
+  background-color: #cf8c22;
+}
+
+.meetup-sub-details {
+  display: flex;
+  flex-wrap: wrap; 
+  gap: 6px 12px;
+  margin-top: 5px; 
+  font-size: 0.8rem; 
+}
+
+.meetup-sub-details .meetup-date {
+  color: #aaa;
+}
+
+.meetup-sub-details .meetup-location {
+  color: #cf8c22;
+  font-style: italic;
+}
+
+.meetup-sub-details .meetup-category {
+  color: #ddd;
+  font-weight: 500;
+}
+
+.meetups-header {
+  width: 100%;
+  max-width: 800px; 
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.meetups-header h1 {
+  font-family: "Merriweather", serif;
+  font-size: 2.5rem;
+  color: #cf8c22;
+  margin-bottom: 0.5rem;
+  font-weight: 400;
+}
+
+.meetups-header p {
+  font-size: 1.1rem;
+  color: #ccc;
+  font-style: italic;
+}

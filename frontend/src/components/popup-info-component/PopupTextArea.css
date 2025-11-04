@@ -1,0 +1,24 @@
+.review {
+  /* background-color: red; */
+  margin-top: 15px;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+.review_textarea {
+  width: 100%;
+
+  min-height: 100px; /* 👈 minsta höjd */
+  resize: vertical; /* tillåter att dra i höjdled, inte bredd */
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+.review_title {
+  color: white;
+  font-size: 20px;
+}
