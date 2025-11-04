@@ -59,7 +59,7 @@ export const markMeetupCompleteForUser = async (req, res) => {
   } catch (err) {
     return res.status(500).json({
       success: false,
-      message: "Tecknical error",
+      message: "Technical error",
       error: err.message,
     });
   }
@@ -97,6 +97,6 @@ export const getProfile = async (req, res) => {
   } catch (err) {
     return res
       .status(500)
-      .json({ success: false, message: "Tecknical error", error: err.message });
+      .json({ success: false, message: "Technical error", error: err.message });
   }
 };
