@@ -65,8 +65,15 @@ a {
   color: #cf8c22;
 }
 
-.login-error {
-  color: red;
+.login-message {
   margin-top: 10px;
   font-size: 0.9rem;
+}
+
+.login-message.success {
+  color: #4caf50;
+}
+
+.login-message.error {
+  color: #f44336;
 }
