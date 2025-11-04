@@ -1,4 +1,4 @@
-import "./Login.css";
+import "./LogIn.css";
 import Icon from "../components/signup-login/Icon.jsx";
 import InputField from "../components/signup-login/InputField.jsx";
 import SignupLoginbtn from "../components/signup-login/SignupLoginbtn.jsx";
@@ -11,19 +11,24 @@ function Login() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [errorMsg, setErrorMsg] = useState("");
+  const [msg, setMsg] = useState("");
+  const [isError, setIsError] = useState(false);
 
   const handleLogin = async (e) => {
     e.preventDefault();
     const result = await login(email, password);
-    if (result.success) {
-      navigate("/home");
-
+    if (result.success === true) {
+      setMsg(result.message);
+      setIsError(false);
       localStorage.setItem("token", result.token);
       localStorage.setItem("userEmail", JSON.stringify(result.user.email)); // spara användardata
+      setTimeout(() => {
+        navigate("/home");
+      }, 3000);
     } else {
       console.log("ERROR!!:", result.error);
-      setErrorMsg(result.error);
+      setMsg(result.error);
+      setIsError(true);
     }
   };
 
@@ -65,7 +70,11 @@ function Login() {
           </NavLink>
         </section>
       </section>
-      {errorMsg && <p className="login-error">{errorMsg}</p>}
+      {msg && (
+        <p className={`login-message ${isError ? "error" : "success"}`}>
+          {msg}
+        </p>
+      )}
     </section>
   );
 }

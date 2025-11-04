@@ -9,8 +9,9 @@ import { signup } from "../api/login-signup/signup.js";
 
 function Signup() {
   const [email, setEmail] = useState("");
-  const [errorMsg, setErrorMsg] = useState("");
   const [password, setPassword] = useState("");
+  const [msg, setMsg] = useState("");
+  const [isError, setIsError] = useState(false);
   const navigate = useNavigate();
 
   const handleSignUp = async (e) => {
@@ -18,10 +19,15 @@ function Signup() {
     const result = await signup(email, password);
     console.log(result);
 
-    if (result.success) {
-      navigate("/");
+    if (result.success === true) {
+      setMsg(result.message);
+      setIsError(false);
+      setTimeout(() => {
+        navigate("/");
+      }, 3000);
     } else {
-      setErrorMsg(result.error);
+      setMsg(result.error);
+      setIsError(true);
     }
   };
 
@@ -63,7 +69,11 @@ function Signup() {
           </NavLink>
         </section>
       </section>
-      {errorMsg && <p className="signup-error">{errorMsg}</p>}
+      {msg && (
+        <p className={`signup-message ${isError ? "error" : "success"}`}>
+          {msg}
+        </p>
+      )}
     </section>
   );
 }

@@ -52,8 +52,16 @@ a {
   justify-content: end;
   margin-top: 10px;
 }
-.signup-error {
-  color: red;
+
+.signup-message {
   margin-top: 10px;
   font-size: 0.9rem;
+}
+
+.signup-message.success {
+  color: #4caf50;
+}
+
+.signup-message.error {
+  color: #f44336;
 }
