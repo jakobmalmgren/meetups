@@ -6,7 +6,6 @@ import Navbar from "../components/navbar/Navbar.jsx";
 import SmallIcon from "../components/general-components/SmallIcon.jsx";
 import PopupLayout from "../components/popup-info-component/PopupLayout.jsx";
 import BlurrBackground from "../components/general-components/BlurrBackground.jsx";
-// === ÄNDRING HÄR ===
 import { getMeetups } from "../api/meetupsApi.js"; 
 
 export default function Meetups() {
@@ -42,20 +41,17 @@ export default function Meetups() {
         params.title = searchQuery;
       }
 
-      // Backend stöder bara en sortering åt gången, så vi prioriterar
       if (dateFilter) {
         params.sortBy = 'date';
         params.order = dateFilter === 'newest' ? 'desc' : 'asc';
       } else if (locationFilter) {
         params.sortBy = 'location';
-        params.order = 'asc'; // "a-z"
+        params.order = 'asc';
       } else if (categoryFilter) {
         params.sortBy = 'category';
-        params.order = 'asc'; // "a-z"
+        params.order = 'asc';
       }
 
-      // === ÄNDRING HÄR ===
-      // Anropar nu 'getMeetups' istället för 'searchMeetups'
       const data = await getMeetups(params);
       
       const formattedData = data.map(m => ({
@@ -72,7 +68,6 @@ export default function Meetups() {
     }
   }, [searchQuery, locationFilter, dateFilter, categoryFilter]); 
 
-  // Ladda om meetups när något av filtrena/sorteringen ändras
   useEffect(() => {
     loadMeetups();
   }, [loadMeetups]);
@@ -97,79 +92,73 @@ export default function Meetups() {
         <SmallIcon />
       </div>
 
-      {isLoading ? (
-        <div className="meetups-content">
-          <p style={{ color: "white" }}>Loading meetups...</p>
+      <div className="meetups-content">
+        <div className="meetups-header">
+          <h1>Find Your Next Event</h1>
+          <p>Explore, filter, and join our community meetups.</p>
         </div>
-      ) : (
-        <div className="meetups-content">
-          <div className="meetups-header">
-            <h1>Find Your Next Event</h1>
-            <p>Explore, filter, and join our community meetups.</p>
-          </div>
 
-          <div className="search-section">
-            <input
-              type="text"
-              placeholder="Search by title..."
-              className="search-input"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-            />
-            
-            {/* Din ursprungliga JSX för filter-controls */}
-            <div className="filter-controls">
-              <select 
-                name="location" 
-                className="filter-select"
-                value={locationFilter}
-                onChange={(e) => setLocationFilter(e.target.value)}
-              >
-                <option value="" disabled>Location</option>
-                <option value="a-z">Location (A-Ö)</option>
-              </select>
-              
-              <select 
-                name="date" 
-                className="filter-select" 
-                value={dateFilter}
-                onChange={(e) => setDateFilter(e.target.value)}
-              >
-                <option value="" disabled>Date</option>
-                <option value="newest">Newest first</option>
-                <option value="oldest">Oldest first</option>
-              </select>
-              
-              <select 
-                name="category" 
-                className="filter-select" 
-                value={categoryFilter}
-                onChange={(e) => setCategoryFilter(e.target.value)}
-              >
-                <option value="" disabled>Category</option>
-                <option value="a-z">Category (A-Ö)</option>
-              </select>
-            </div>
-          </div>
+        <div className="search-section">
+          <input
+            type="text"
+            placeholder="Search by title..."
+            className="search-input"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
           
+          <div className="filter-controls">
+            <select 
+              name="location" 
+              className="filter-select"
+              value={locationFilter}
+              onChange={(e) => setLocationFilter(e.target.value)}
+            >
+              <option value="" disabled>Location</option>
+              <option value="a-z">Location (A-Ö)</option>
+            </select>
+            
+            <select 
+              name="date" 
+              className="filter-select" 
+              value={dateFilter}
+              onChange={(e) => setDateFilter(e.target.value)}
+            >
+              <option value="" disabled>Date</option>
+              <option value="newest">Newest first</option>
+              <option value="oldest">Oldest first</option>
+            </select>
+            
+            <select 
+              name="category" 
+              className="filter-select" 
+              value={categoryFilter}
+              onChange={(e) => setCategoryFilter(e.target.value)}
+            >
+              <option value="" disabled>Category</option>
+              <option value="a-z">Category (A-Ö)</option>
+            </select>
+          </div>
+        </div>
+        
+        {isLoading ? (
+          <p style={{ color: "white", marginTop: "2rem" }}>Loading meetups...</p>
+        ) : (
           <div className="meetups-section">
             <h2>UPCOMING MEETUPS</h2>
             <div className="meetups-box">
-          
               {meetups.length > 0 ? (
                 <ul>
                   {meetups.map((m) => (
                     <li key={m._id}> 
                       <div className="meetup-details">
                         <span className="meetup-title">{m.title}</span>
-                        
                         <div className="meetup-sub-details">
                           <span className="meetup-date">{m.date}</span>
                           <span className="meetup-location">{m.location}</span>
                           <span className="meetup-category">{m.category}</span>
                         </div>
                       </div>
-                      
                       <div className="meetup-actions">
                         <button
                           className="action-btn info-btn"
@@ -187,8 +176,9 @@ export default function Meetups() {
               )}
             </div>
           </div>
-        </div>
-      )}
+        )}
+        
+      </div>
 
       <Navbar />
 

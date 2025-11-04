@@ -97,7 +97,7 @@ export default function Profile() {
           <div className="meetups-box">
             {user.meetups.length > 0 ? (
               <ul>
-                {/* === UPPDATERAD JSX-MAP FÖR BOKADE === */}
+
                 {user.meetups.map((m) => (
                   <li key={m.id}>
                     <div className="meetup-details">
@@ -139,7 +139,7 @@ export default function Profile() {
           <div className="meetups-box">
             {user.history.length > 0 ? (
               <ul>
-                {/* === UPPDATERAD JSX-MAP FÖR HISTORIK === */}
+
                 {user.history.map((m) => (
                   <li key={m.id}>
                     <div className="meetup-details">
