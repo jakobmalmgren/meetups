@@ -1,71 +1,95 @@
 import "./Meetups.css";
-import { useState, useEffect, useMemo } from "react"; 
+import { useState, useEffect, useCallback } from "react";
 import { FaInfoCircle } from "react-icons/fa";
+import { useNavigate } from "react-router-dom"; 
 import Navbar from "../components/navbar/Navbar.jsx";
 import SmallIcon from "../components/general-components/SmallIcon.jsx";
-import { getAllMeetups } from "../services/meetupService.js";
+import PopupLayout from "../components/popup-info-component/PopupLayout.jsx";
+import BlurrBackground from "../components/general-components/BlurrBackground.jsx";
+// === ÄNDRING HÄR ===
+import { getMeetups } from "../api/meetupsApi.js"; 
 
 export default function Meetups() {
+  const navigate = useNavigate(); 
+
+  // Data states
   const [meetups, setMeetups] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  
+  // Popup states
+  const [selectedMeetupId, setSelectedMeetupId] = useState(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  // State för filter-värden
+  // Filter states
   const [searchQuery, setSearchQuery] = useState("");
   const [locationFilter, setLocationFilter] = useState("");
   const [dateFilter, setDateFilter] = useState("");
   const [categoryFilter, setCategoryFilter] = useState("");
 
+  // Kontrollera inloggningsstatus vid första laddning
   useEffect(() => {
-    const loadMeetups = async () => {
-      try {
-        const data = await getAllMeetups();
-        setMeetups(data);
-      } catch (error) {
-        console.error("Failed to fetch meetups:", error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    loadMeetups();
+    const token = localStorage.getItem("token");
+    setIsLoggedIn(!!token);
   }, []);
 
-  
-  const filteredMeetups = useMemo(() => {
-    let processedMeetups = [...meetups];
+  // Funktion som översätter filter-states till backend-anrop
+  const loadMeetups = useCallback(async () => {
+    setIsLoading(true);
+    try {
+      const params = {};
+      
+      if (searchQuery) {
+        params.title = searchQuery;
+      }
 
-    // 1. Filtrera på söktitel
-    if (searchQuery) {
-      processedMeetups = processedMeetups.filter((m) =>
-        m.title.toLowerCase().includes(searchQuery.toLowerCase())
-      );
+      // Backend stöder bara en sortering åt gången, så vi prioriterar
+      if (dateFilter) {
+        params.sortBy = 'date';
+        params.order = dateFilter === 'newest' ? 'desc' : 'asc';
+      } else if (locationFilter) {
+        params.sortBy = 'location';
+        params.order = 'asc'; // "a-z"
+      } else if (categoryFilter) {
+        params.sortBy = 'category';
+        params.order = 'asc'; // "a-z"
+      }
+
+      // === ÄNDRING HÄR ===
+      // Anropar nu 'getMeetups' istället för 'searchMeetups'
+      const data = await getMeetups(params);
+      
+      const formattedData = data.map(m => ({
+        ...m,
+        date: new Date(m.date).toLocaleDateString("sv-SE"), 
+      }));
+      setMeetups(formattedData);
+
+    } catch (error) {
+      console.error("Failed to fetch meetups:", error);
+      setMeetups([]); 
+    } finally {
+      setIsLoading(false);
     }
+  }, [searchQuery, locationFilter, dateFilter, categoryFilter]); 
 
-    // 2. Sortera på datum
-    if (dateFilter === "newest") {
-      processedMeetups.sort((a, b) => new Date(b.date) - new Date(a.date));
-    } else if (dateFilter === "oldest") {
-      processedMeetups.sort((a, b) => new Date(a.date) - new Date(b.date));
+  // Ladda om meetups när något av filtrena/sorteringen ändras
+  useEffect(() => {
+    loadMeetups();
+  }, [loadMeetups]);
+
+
+  // Inloggnings-check för att se detaljer
+  const handleOpenDetails = (meetupId) => {
+    if (!isLoggedIn) {
+      alert("Du måste vara inloggad för att se detaljerad information.");
+    } else {
+      setSelectedMeetupId(meetupId);
     }
-
-    // 3. Sortera på plats (A-Ö)
-    if (locationFilter === "a-z") {
-      processedMeetups.sort((a, b) => a.location.localeCompare(b.location));
-    }
-    
-    // 4. Sortera på kategori (A-Ö)
-    if (categoryFilter === "a-z") {
-      processedMeetups.sort((a, b) => a.category.localeCompare(b.category));
-    }
-
-    return processedMeetups;
-  }, [meetups, searchQuery, locationFilter, dateFilter, categoryFilter]);
-
-
-  const handleOpenDetails = (meetup) => {
-    console.log("Opening details for:", meetup.title);
   };
 
+  const closePopup = () => {
+    setSelectedMeetupId(null);
+  };
 
   return (
     <div className="meetups">
@@ -85,8 +109,6 @@ export default function Meetups() {
           </div>
 
           <div className="search-section">
-
-            {/* Koppla sökfältet till state */}
             <input
               type="text"
               placeholder="Search by title..."
@@ -94,6 +116,8 @@ export default function Meetups() {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
+            
+            {/* Din ursprungliga JSX för filter-controls */}
             <div className="filter-controls">
               <select 
                 name="location" 
@@ -132,10 +156,10 @@ export default function Meetups() {
             <h2>UPCOMING MEETUPS</h2>
             <div className="meetups-box">
           
-              {filteredMeetups.length > 0 ? (
+              {meetups.length > 0 ? (
                 <ul>
-                  {filteredMeetups.map((m) => (
-                    <li key={m.id}>
+                  {meetups.map((m) => (
+                    <li key={m._id}> 
                       <div className="meetup-details">
                         <span className="meetup-title">{m.title}</span>
                         
@@ -150,7 +174,7 @@ export default function Meetups() {
                         <button
                           className="action-btn info-btn"
                           aria-label="Show details"
-                          onClick={() => handleOpenDetails(m)}
+                          onClick={() => handleOpenDetails(m._id)} 
                         >
                           <FaInfoCircle />
                         </button>
@@ -167,6 +191,16 @@ export default function Meetups() {
       )}
 
       <Navbar />
+
+      {selectedMeetupId && (
+        <>
+          <BlurrBackground onClick={closePopup} />
+          <PopupLayout 
+            meetupId={selectedMeetupId} 
+            onClose={closePopup} 
+          />
+        </>
+      )}
     </div>
   );
 }
