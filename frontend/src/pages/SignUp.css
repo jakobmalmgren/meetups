@@ -59,7 +59,7 @@ a {
 }
 
 .signup-message.success {
-  color: #4caf50;
+  color: green;
 }
 
 .signup-message.error {
