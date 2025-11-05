@@ -14,7 +14,7 @@ function Carousel({ meetupId }) {
     const fetchReviewsForMeetup = async () => {
       try {
         const data = await specificMeetupWithId(meetupId);
-        console.log("DATA", data.reviews);
+        console.log("DATAreviiiiiiiie", data.reviews);
         if (data && Array.isArray(data.reviews)) {
           setReviews(data.reviews);
         }
@@ -34,14 +34,14 @@ function Carousel({ meetupId }) {
     slidesToScroll: 1,
   };
   return (
-    <Slider {...settings}>
+    <Slider {...settings} className="carousel-slider">
       {reviews.length > 0 ? (
         reviews.map((review, index) => (
-          <div key={index}>
-            <h4 className="carousel-header">{`Review: ${review.meetup.title}`}</h4>
-            <p className="carousel-review">{review.text}</p>
-            <p className="carousel-user">User: {review.review}</p>
-            <p className="carousel-rating">Rating: {review.rating}</p>
+          <div key={index} className="carousel-wrapper">
+            <h4 className="carousel-header">{`Title: ${review.meetup.title}`}</h4>
+            <p className="carousel-user">{`User: ${review.user}`} </p>
+            <p className="carousel-review">{`Review: ${review.review}`} </p>
+            <p className="carousel-rating">{`Rating: ${review.rating}`} </p>
           </div>
         ))
       ) : (
