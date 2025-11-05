@@ -22,3 +22,12 @@
   color: white;
   font-size: 20px;
 }
+.review {
+  font-size: 12px;
+}
+.review.success {
+  color: green;
+}
+.review.error {
+  color: red;
+}

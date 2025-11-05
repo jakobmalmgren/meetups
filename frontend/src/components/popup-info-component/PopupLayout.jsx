@@ -31,7 +31,6 @@ export default function PopupLayout({ meetupId, handleModal }) {
   const handleRegisterMeetup = async () => {
     try {
       const data = await registerMeetup(meetupId);
-      console.log("DTAAAAAAA", data);
       if (data.success !== true) {
         setBookingText(data.message);
         setBookingStatus("error");
@@ -39,10 +38,15 @@ export default function PopupLayout({ meetupId, handleModal }) {
       }
       setBookingText(data.message);
       setBookingStatus("success");
-      setSpecificMeetup((prev) => ({
-        ...prev,
-        availableSpots: prev.availableSpots - 1,
-      }));
+      const latestData = await specificMeetupWithId(meetupId);
+      console.log("LATEST", latestData);
+
+      // setSpecificMeetup(latestData);
+      setSpecificMeetup({ ...latestData });
+      // setSpecificMeetup((prev) => ({
+      //   ...prev,
+      //   availableSpots: prev.availableSpots - 1,
+      // }));
     } catch (err) {
       console.log(err);
     }
@@ -71,7 +75,7 @@ export default function PopupLayout({ meetupId, handleModal }) {
           </section>
 
           <section className="popup-layout_carousel">
-            <Carousel />
+            <Carousel meetupId={meetupId} />
           </section>
 
           <section className="popup-layout_btns">

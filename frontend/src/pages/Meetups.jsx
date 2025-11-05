@@ -1,14 +1,14 @@
 import "./Meetups.css";
 import { useState, useEffect, useCallback } from "react";
 import { FaInfoCircle } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import Navbar from "../components/navbar/Navbar.jsx";
 import SmallIcon from "../components/general-components/SmallIcon.jsx";
 import PopupLayout from "../components/popup-info-component/PopupLayout.jsx";
 import { getMeetups } from "../api/meetupsApi.js";
 
 export default function Meetups() {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   // Data states
   const [meetups, setMeetups] = useState([]);
@@ -18,7 +18,7 @@ export default function Meetups() {
 
   // Popup states
   // const [selectedMeetupId, setSelectedMeetupId] = useState(null);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  // const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   // Filter states
   const [searchQuery, setSearchQuery] = useState("");
@@ -27,10 +27,10 @@ export default function Meetups() {
   const [categoryFilter, setCategoryFilter] = useState("");
 
   // Kontrollera inloggningsstatus vid första laddning
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    setIsLoggedIn(!!token);
-  }, []);
+  // useEffect(() => {
+  //   const token = localStorage.getItem("token");
+  //   setIsLoggedIn(!!token);
+  // }, []);
 
   // Funktion som översätter filter-states till backend-anrop
   const loadMeetups = useCallback(async () => {
@@ -176,9 +176,7 @@ export default function Meetups() {
                         <button
                           className="action-btn info-btn"
                           aria-label="Show details"
-                          // onClick={() => handleOpenDetails(m._id)}
                           onClick={() => {
-                            console.log("Clicked ID:", m._id);
                             handleModal(m._id);
                           }}
                         >
@@ -200,12 +198,6 @@ export default function Meetups() {
 
       <Navbar />
 
-      {/* {selectedMeetupId && (
-        <>
-          <BlurrBackground onClick={closePopup} />
-          <PopupLayout meetupId={selectedMeetupId} onClose={closePopup} />
-        </>
-      )} */}
       {openModal && (
         <section>
           <div className="blur-background" onClick={handleModal}></div>
