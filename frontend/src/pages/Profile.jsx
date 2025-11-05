@@ -4,9 +4,13 @@ import { FaUserCircle, FaCheck, FaTimes } from "react-icons/fa";
 import Navbar from "../components/navbar/Navbar.jsx";
 import SmallIcon from "../components/general-components/SmallIcon.jsx";
 import ConfirmModal from "../components/general-components/ConfirmModal.jsx";
+import { getProfileData, markMeetupAsDone } from "../api/profileApi.js";
+import { unregisterMeetup } from "../api/unregisterMeetup.js";
 
 export default function Profile() {
   const [user, setUser] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   const [modalState, setModalState] = useState({
     isOpen: false,
@@ -14,47 +18,41 @@ export default function Profile() {
     meetupTitle: "",
   });
 
+  // Hämta profildata när komponenten laddas
   useEffect(() => {
-    // === UPPDATERAD MOCK-DATA ===
-    const mockUser = {
-      email: "jane.doe@example.com",
-      image: "",
-      meetups: [
-        { id: 1, title: "Frontend Developers Meetup", date: "2025-11-05", location: "Stockholm", category: "Web Development" },
-        { id: 2, title: "React CI/CD Workshop", date: "2025-12-10", location: "Göteborg", category: "DevOps" },
-        { id: 3, title: "JavaScript Community Night", date: "2026-01-14", location: "Stockholm", category: "Web Development" },
-        { id: 4, title: "Docker Deep Dive", date: "2026-02-08", location: "Malmö", category: "DevOps" },
-        { id: 5, title: "Node.js API Masterclass", date: "2026-03-02", location: "Göteborg", category: "Backend" },
-        { id: 6, title: "GitHub Actions for Beginners", date: "2026-03-28", location: "Stockholm", category: "DevOps" },
-        { id: 7, title: "Modern CSS & Tailwind Workshop", date: "2026-04-11", location: "Malmö", category: "Web Development" },
-        { id: 8, title: "Fullstack Networking Night", date: "2026-05-09", location: "Göteborg", category: "Networking" },
-        { id: 9, title: "TypeScript Fundamentals Bootcamp", date: "2026-06-20", location: "Stockholm", category: "Web Development" },
-        { id: 10, title: "Next.js and Vite Integration Session", date: "2026-07-15", location: "Distans", category: "Web Development" },
-      ],
-      history: [
-         { id: 11, title: "Old AI Ethics Panel", date: "2025-01-20", location: "Distans", category: "AI" }
-      ],
+    const fetchProfile = async () => {
+      setIsLoading(true);
+      setError(null);
+      const result = await getProfileData();
+
+      if (result.success) {
+        // Backend skickar datan i ett 'data'-objekt
+        setUser(result.data);
+      } else {
+        setError(result.error || "Kunde inte ladda profilen.");
+      }
+      setIsLoading(false);
     };
 
-    setTimeout(() => setUser(mockUser), 500);
+    fetchProfile();
   }, []);
 
-
-  const handleMarkAsDone = (meetupId) => {
-    const meetupToMove = user.meetups.find((m) => m.id === meetupId);
-    if (!meetupToMove) return;
-
-    setUser((prevUser) => ({
-      ...prevUser,
-      meetups: prevUser.meetups.filter((m) => m.id !== meetupId),
-      history: [meetupToMove, ...prevUser.history],
-    }));
+  // Hanterar "Markera som klar"
+  const handleMarkAsDone = async (meetupId) => {
+    const result = await markMeetupAsDone(meetupId);
+    if (result.success) {
+      
+      setUser(result.data);
+    } else {
+      alert(`Fel: ${result.error}`);
+    }
   };
 
+  // Öppnar "avboka"-modalen
   const openCancelModal = (meetup) => {
     setModalState({
       isOpen: true,
-      meetupId: meetup.id,
+      meetupId: meetup._id,
       meetupTitle: meetup.title,
     });
   };
@@ -63,19 +61,36 @@ export default function Profile() {
     setModalState({ isOpen: false, meetupId: null, meetupTitle: "" });
   };
 
-  const handleConfirmCancel = () => {
+  // Hanterar "Bekräfta avbokning"
+  const handleConfirmCancel = async () => {
     if (!modalState.meetupId) return;
 
-    setUser((prevUser) => ({
-      ...prevUser,
-      meetups: prevUser.meetups.filter((m) => m.id !== modalState.meetupId),
-    }));
+    const result = await unregisterMeetup(modalState.meetupId);
+
+    if (result.success) {
     
-    closeCancelModal();
+      setUser((prevUser) => ({
+        ...prevUser,
+        registered: prevUser.registered.filter(
+          (m) => m._id !== modalState.meetupId
+        ),
+      }));
+      closeCancelModal();
+    } else {
+      alert(`Fel: ${result.error}`);
+      closeCancelModal();
+    }
   };
 
 
-  if (!user) return <p style={{ color: "white" }}>Loading profile...</p>;
+  if (isLoading) {
+    return <p style={{ color: "white" }}>Loading profile...</p>;
+  }
+
+  // Visar felmeddelande
+  if (error) {
+    return <p style={{ color: "red" }}>Error: {error}</p>;
+  }
 
   return (
     <div className="profile">
@@ -84,43 +99,47 @@ export default function Profile() {
       </div>
 
       <div className="profile-content">
-        {user.image ? (
+        {user?.image ? (
           <img src={user.image} alt="Profile" className="profile-img" />
         ) : (
           <FaUserCircle className="profile-icon" />
         )}
 
-        <h1 className="profile-name">{user.email}</h1>
+        <h1 className="profile-name">{user?.email}</h1>
 
         <div className="meetups-section">
           <h2>YOUR BOOKED MEETUPS</h2>
           <div className="meetups-box">
-            {user.meetups.length > 0 ? (
+            
+            {user?.registered?.length > 0 ? (
               <ul>
-
-                {user.meetups.map((m) => (
-                  <li key={m.id}>
+                {user.registered.map((m) => (
+                  <li key={m._id}>
+                    {" "}
+                    {/* Använd _id från MongoDB som nyckel */}
                     <div className="meetup-details">
                       <span className="meetup-title">{m.title}</span>
                       <div className="meetup-sub-details">
-                        <span className="meetup-date">{m.date}</span>
+                        
+                        <span className="meetup-date">
+                          {new Date(m.date).toLocaleDateString("sv-SE")}
+                        </span>
                         <span className="meetup-location">{m.location}</span>
                         <span className="meetup-category">{m.category}</span>
                       </div>
                     </div>
-                    
                     <div className="meetup-actions">
                       <button
                         className="action-btn done-btn"
                         aria-label="Mark as done"
-                        onClick={() => handleMarkAsDone(m.id)}
+                        onClick={() => handleMarkAsDone(m._id)} 
                       >
                         <FaCheck />
                       </button>
                       <button
                         className="action-btn cancel-btn"
                         aria-label="Cancel meetup"
-                        onClick={() => openCancelModal(m)}
+                        onClick={() => openCancelModal(m)} 
                       >
                         <FaTimes />
                       </button>
@@ -133,19 +152,23 @@ export default function Profile() {
             )}
           </div>
         </div>
-        
+
         <div className="meetups-section history-section">
           <h2>YOUR HISTORY</h2>
           <div className="meetups-box">
-            {user.history.length > 0 ? (
+            {user?.history?.length > 0 ? (
               <ul>
-
                 {user.history.map((m) => (
-                  <li key={m.id}>
+                  <li key={m._id}>
+                    {" "}
+                    {/* Använd _id från MongoDB som nyckel */}
                     <div className="meetup-details">
                       <span className="meetup-title">{m.title}</span>
                       <div className="meetup-sub-details">
-                        <span className="meetup-date">{m.date}</span>
+                        
+                        <span className="meetup-date">
+                          {new Date(m.date).toLocaleDateString("sv-SE")}
+                        </span>
                         <span className="meetup-location">{m.location}</span>
                         <span className="meetup-category">{m.category}</span>
                       </div>
@@ -158,7 +181,6 @@ export default function Profile() {
             )}
           </div>
         </div>
-
       </div>
 
       <Navbar />

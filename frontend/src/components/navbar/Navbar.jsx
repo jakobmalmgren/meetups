@@ -7,7 +7,6 @@ export default function Navbar() {
 
   // Funktion som hanterar utloggningen
   const handleLogout = () => {
-    // Rensa användardata från localStorage
     localStorage.removeItem("token");
     localStorage.removeItem("userEmail");
 

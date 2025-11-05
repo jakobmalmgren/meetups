@@ -10,7 +10,7 @@ export async function specificMeetupWithId(id) {
       }
     );
     const data = await response.json();
-    console.log("DATA!!!", data);
+    // console.log("DATA!!!", data);
     if (!response.ok) {
       return { success: false, error: data.error || "Unknown error" };
     }
