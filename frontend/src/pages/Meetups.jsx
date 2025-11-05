@@ -57,7 +57,10 @@ export default function Meetups() {
 
       const formattedData = data.map((m) => ({
         ...m,
-        date: new Date(m.date).toLocaleDateString("sv-SE"),
+        date: new Date(m.date).toLocaleString("sv-SE", {
+          dateStyle: "short",
+          timeStyle: "short",
+        }),
       }));
       setMeetups(formattedData);
     } catch (error) {
