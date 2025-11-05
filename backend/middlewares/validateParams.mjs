@@ -12,5 +12,3 @@ export const validateParams = (schema) => (req, res, next) => {
   req.params = value;
   next();
 };
-
-//valid
