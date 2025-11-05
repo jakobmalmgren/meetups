@@ -66,7 +66,7 @@ function Login() {
             to="/signup"
             className={({ isActive }) => (isActive ? "active" : "")}
           >
-            signup
+            Signup
           </NavLink>
         </section>
       </section>
