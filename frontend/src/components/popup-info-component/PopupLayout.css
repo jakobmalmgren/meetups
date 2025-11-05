@@ -9,8 +9,12 @@
   background-color: #1a1a1a;
   max-height: 100vh;
   overflow-y: auto;
-  transform: scale(0.8);
   padding: 20px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.9);
+  position: fixed;
+  z-index: 1000;
 }
 
 .popup-layout_section-info {
@@ -67,4 +71,14 @@
   height: auto;
   padding: 10px;
   border-radius: 5px;
+}
+.popup-layout_info-text {
+  font-size: 10px;
+}
+.popup-layout_info-text.success {
+  color: green;
+}
+
+.popup-layout_info-text.error {
+  color: red;
 }
