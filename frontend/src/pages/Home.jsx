@@ -18,15 +18,19 @@ export default function Home() {
         <SmallIcon />
       </div>
 
-      <div className="home-card">
-        <h2>Welcome to</h2>
-        <h1>
-          Meetup <span>Z</span>
-        </h1>
-        <p className="home_user">{user}</p>
-        <p>-The future of meetups</p>
-        <img src={meetingImage} alt="Business meeting" />
+   
+      <div className="home-content-wrapper">
+        <div className="home-card">
+          <h2>Welcome to</h2>
+          <h1>
+            Meetup <span>Z</span>
+          </h1>
+          <p className="home_user">{user}</p>
+          <p>-The future of meetups</p>
+          <img src={meetingImage} alt="Business meeting" />
+        </div>
       </div>
+      {/* SLUT PÅ WRAPPER */}
 
       <Navbar />
     </div>
