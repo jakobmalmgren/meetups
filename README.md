@@ -100,7 +100,7 @@ Backend på `http://localhost:3000`
 
 ### Logga in
 
-![Login](frontend/src/assets/login-page.png)
+![Login](frontend/src/assets/Login-page.png)
 
 ### Home
 
