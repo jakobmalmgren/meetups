@@ -28,10 +28,6 @@ app.use("/api/reviews", reviewRouter);
 
 app.use("/api/meetups", meetupRouter);
 app.use("/api/profile", profileRouter);
-// Check för render
-app.get("/api", (req, res) => {
-  res.send("Lala,lal");
-});
 
 const startServer = async () => {
   await connectDB();

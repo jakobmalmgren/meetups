@@ -1,4 +1,3 @@
-//Skapa meetupModel
 import mongoose from "mongoose";
 
 const meetupSchema = new mongoose.Schema(

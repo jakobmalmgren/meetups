@@ -3,9 +3,8 @@ import { useState } from "react";
 import { FaStar } from "react-icons/fa";
 import PopupButtons from "./PopupButtons";
 import { reviewAPi } from "../../api/reviewApi";
-// ej klar .
 
-function PopupTextArea({ meetupId }) {
+function PopupTextArea({ meetupId, handleReviewAdded }) {
   const [rating, setRating] = useState(0);
   const [reviewText, setReviewText] = useState("");
   const [infoText, setInfoText] = useState("");
@@ -13,7 +12,6 @@ function PopupTextArea({ meetupId }) {
 
   const handleClick = (value) => {
     setRating(value);
-    // onRate(value);
   };
 
   const fetchReview = async () => {
@@ -22,17 +20,20 @@ function PopupTextArea({ meetupId }) {
     if (data.error) {
       setInfoText(data.error);
       setLeavingReview("error");
-      setRating(0); // nollställer stjärnorna
-      setReviewText(""); // tömmer textarea
+      setRating(0);
+      setReviewText("");
 
       return;
     }
     setInfoText("Kanon! Du har lämnat en review!");
     setLeavingReview("success");
-    setRating(0); // nollställer stjärnorna
-    setReviewText(""); // tömmer textarea
-    setLeavingReview("");
+    setRating(0);
+    setReviewText("");
+    if (handleReviewAdded) {
+      handleReviewAdded();
+    }
   };
+
   return (
     <section className="review">
       <h4 className="review_title">Leave a review</h4>
@@ -48,7 +49,7 @@ function PopupTextArea({ meetupId }) {
       ></textarea>
       <p className={`review ${leavingReview}`}>{infoText}</p>
 
-      <div>
+      <div className="review-stars">
         {[1, 2, 3, 4, 5].map((value) => (
           <FaStar
             key={value}
