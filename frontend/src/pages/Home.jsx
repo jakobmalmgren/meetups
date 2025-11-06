@@ -30,7 +30,6 @@ export default function Home() {
           <img src={meetingImage} alt="Business meeting" />
         </div>
       </div>
-      {/* SLUT PÅ WRAPPER */}
 
       <Navbar />
     </div>
