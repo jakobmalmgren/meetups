@@ -1,7 +1,7 @@
 .home {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start; /* Ändrad från 'center' */
   align-items: center;
   background-color: #1e1e1e;
   height: 100%;
@@ -16,10 +16,17 @@
   justify-content: center;
   align-items: center;
   height: 80%;
-  padding: 6rem;
+  padding: 7rem;
   width: 90%;
   margin: 2rem;
   padding-bottom: 60%;
+  /* Fix: Lägg till overflow-y så innehållet kan scrolla om det blir för stort */
+  overflow-y: auto;
+  scrollbar-width: none; /* Dölj scrollbar */
+}
+
+.home-card::-webkit-scrollbar {
+  display: none; /* Dölj scrollbar för Webkit */
 }
 
 .home-card h2 {
