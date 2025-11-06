@@ -1,19 +1,29 @@
 .carousel-header {
-  font-size: 12px;
+  font-size: 15px;
+  font-style: italic;
+}
+
+.carousel-user {
+  font-size: 13px;
+  padding: 5px;
+}
+
+.carousel-rating {
+  font-size: 13px;
+  padding: 5px;
 }
 .carousel-review {
-  font-size: 10px;
+  font-size: 13px;
+  padding: 5px;
 }
-.carousel-user {
-  font-size: 12px;
-}
-/* .slick-dots {
-  position: absolute;
-} */
 .slick-dots {
   position: relative !important;
   bottom: auto !important;
   left: auto !important;
   right: auto !important;
   margin-top: 10px;
+}
+
+.carousel-wrapper {
+  text-align: center;
 }
