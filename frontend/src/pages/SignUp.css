@@ -1,25 +1,17 @@
-.signup {
-  /* background-color: red; */
-}
 .sign-up_upper-wrapper {
-  /* background-color: gold; */
   width: 100%;
   height: 40%;
 }
 .sign-up_lower-wrapper {
   width: 100%;
   height: 40%;
-  /* background-color: grey; */
-  /* background-color: pink; */
 }
 .sign-up_header-wrapper {
-  /* background-color: green; */
   height: 20%;
 }
 .sign-up_header {
-  /* padding-top: 15px; */
   text-align: center;
-  /* background-color: grey; */
+
   font-family: Merriweather;
   font-weight: 900;
   font-size: 45px;
@@ -48,10 +40,8 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
-  /* background-color: blueviolet; */
 }
 .sign-up_link-wrapper {
-  /* background-color: aqua; */
   display: flex;
   justify-content: end;
   margin-top: 10px;

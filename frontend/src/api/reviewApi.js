@@ -9,10 +9,8 @@ export async function reviewAPi(id, rating, reviewText) {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
-
-          // nån text för de ingen token`?
         },
-        body: JSON.stringify({ review: reviewText, rating: rating }), // här skickas datan
+        body: JSON.stringify({ review: reviewText, rating: rating }),
       }
     );
     const data = await response.json();

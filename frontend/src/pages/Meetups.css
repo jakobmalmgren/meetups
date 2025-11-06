@@ -29,7 +29,6 @@
 
 .meetups-section {
   width: 100%;
-  /* VIKTIG ÄNDRING: 10% var för mycket, ändrat till 2rem */
   padding-top: 2rem;
   height: auto;
   text-align: left;

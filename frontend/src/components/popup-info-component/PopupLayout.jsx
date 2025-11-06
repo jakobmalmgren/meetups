@@ -1,4 +1,3 @@
-// frontend/src/components/popup-info-component/PopupLayout.jsx
 import "./PopupLayout.css";
 import PopupButtons from "./PopupButtons";
 import { FaCircleXmark } from "react-icons/fa6";
@@ -14,10 +13,8 @@ export default function PopupLayout({ meetupId, handleModal }) {
   const [open, setOpen] = useState(false);
   const [bookingText, setBookingText] = useState("");
   const [bookingStatus, setBookingStatus] = useState("");
-  //ny
   const [refreshReviews, setRefreshReviews] = useState(0);
 
-  //ny
   const fetchSpecMeetup = async () => {
     try {
       const data = await specificMeetupWithId(meetupId);
@@ -33,7 +30,7 @@ export default function PopupLayout({ meetupId, handleModal }) {
       try {
         const data = await specificMeetupWithId(meetupId);
         setSpecificMeetup(data);
-        console.log("hejfrånpopuplayout: ", data); // undvik stale state-logg
+        console.log("hejfrånpopuplayout: ", data);
       } catch (err) {
         console.error("Failed to fetch specific meetup:", err);
       }
@@ -43,25 +40,9 @@ export default function PopupLayout({ meetupId, handleModal }) {
   }, [meetupId]);
 
   const handleReviewAdded = () => {
-    // Öka värdet – triggar en re-render
     setRefreshReviews((prev) => prev + 1);
-    // Hämta om meetup-info (så du även får uppdaterad review-lista i Layout om du vill visa där)
     fetchSpecMeetup();
   };
-
-  // useEffect(() => {
-  //   if (!meetupId) return;
-  //   const fetchSpecMeetup = async () => {
-  //     try {
-  //       const data = await specificMeetupWithId(meetupId);
-  //       setSpecificMeetup(data);
-  //       console.log("hejfrånpopuplayout: ", specificMeetup);
-  //     } catch (err) {
-  //       console.error("Failed to fetch specific meetup:", err);
-  //     }
-  //   };
-  //   fetchSpecMeetup();
-  // }, [meetupId]);
 
   const handleRegisterMeetup = async () => {
     try {
@@ -85,7 +66,10 @@ export default function PopupLayout({ meetupId, handleModal }) {
     if (!value) return "";
     const d = new Date(value);
     if (Number.isNaN(d.getTime())) return String(value);
-    return d.toLocaleString("sv-SE", { dateStyle: "short", timeStyle: "short" });
+    return d.toLocaleString("sv-SE", {
+      dateStyle: "short",
+      timeStyle: "short",
+    });
   };
 
   return (
@@ -99,7 +83,6 @@ export default function PopupLayout({ meetupId, handleModal }) {
           <section className="popup-layout_section-info">
             <h1 className="popup-layout_header">{`Event: ${specificMeetup.title}`}</h1>
             <p className="popup-layout_time">
-
               {`Tid & plats: ${formatSvShort(specificMeetup.date)}`}
             </p>
             <p className="popup-layout_info">
