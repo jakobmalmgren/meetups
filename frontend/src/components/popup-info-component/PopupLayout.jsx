@@ -13,20 +13,36 @@ export default function PopupLayout({ meetupId, handleModal }) {
   const [open, setOpen] = useState(false);
   const [bookingText, setBookingText] = useState("");
   const [bookingStatus, setBookingStatus] = useState("");
+  const [refreshReviews, setRefreshReviews] = useState(0);
 
+  const fetchSpecMeetup = async () => {
+    try {
+      const data = await specificMeetupWithId(meetupId);
+      setSpecificMeetup(data);
+      console.log("hejfrånpopuplayout: ", specificMeetup);
+    } catch (err) {
+      console.error("Failed to fetch specific meetup:", err);
+    }
+  };
   useEffect(() => {
     if (!meetupId) return;
     const fetchSpecMeetup = async () => {
       try {
         const data = await specificMeetupWithId(meetupId);
         setSpecificMeetup(data);
-        console.log("hejfrånpopuplayout: ", specificMeetup);
+        console.log("hejfrånpopuplayout: ", data);
       } catch (err) {
         console.error("Failed to fetch specific meetup:", err);
       }
     };
+
     fetchSpecMeetup();
   }, [meetupId]);
+
+  const handleReviewAdded = () => {
+    setRefreshReviews((prev) => prev + 1);
+    fetchSpecMeetup();
+  };
 
   const handleRegisterMeetup = async () => {
     try {
@@ -40,19 +56,21 @@ export default function PopupLayout({ meetupId, handleModal }) {
       setBookingStatus("success");
       const latestData = await specificMeetupWithId(meetupId);
       console.log("LATEST", latestData);
-
-      // setSpecificMeetup(latestData);
       setSpecificMeetup({ ...latestData });
-      // setSpecificMeetup((prev) => ({
-      //   ...prev,
-      //   availableSpots: prev.availableSpots - 1,
-      // }));
     } catch (err) {
       console.log(err);
     }
   };
 
-  // ett api för reviews me! finns de inga reviews.visa ej några reviews..
+  const formatSvShort = (value) => {
+    if (!value) return "";
+    const d = new Date(value);
+    if (Number.isNaN(d.getTime())) return String(value);
+    return d.toLocaleString("sv-SE", {
+      dateStyle: "short",
+      timeStyle: "short",
+    });
+  };
 
   return (
     <div className="popup-layout">
@@ -65,7 +83,7 @@ export default function PopupLayout({ meetupId, handleModal }) {
           <section className="popup-layout_section-info">
             <h1 className="popup-layout_header">{`Event: ${specificMeetup.title}`}</h1>
             <p className="popup-layout_time">
-              {`Tid & plats: ${specificMeetup.date}`}
+              {`Tid & plats: ${formatSvShort(specificMeetup.date)}`}
             </p>
             <p className="popup-layout_info">
               {`Description: ${specificMeetup.description}`}
@@ -75,7 +93,7 @@ export default function PopupLayout({ meetupId, handleModal }) {
           </section>
 
           <section className="popup-layout_carousel">
-            <Carousel meetupId={meetupId} />
+            <Carousel meetupId={meetupId} refresh={refreshReviews} />
           </section>
 
           <section className="popup-layout_btns">
@@ -94,7 +112,12 @@ export default function PopupLayout({ meetupId, handleModal }) {
             </PopupButtons>
           </section>
 
-          {open && <PopupTextArea meetupId={meetupId} />}
+          {open && (
+            <PopupTextArea
+              meetupId={meetupId}
+              handleReviewAdded={handleReviewAdded}
+            />
+          )}
         </>
       )}
     </div>

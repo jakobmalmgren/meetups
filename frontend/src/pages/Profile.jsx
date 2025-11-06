@@ -1,6 +1,7 @@
 import "./Profile.css";
 import { useState, useEffect } from "react";
-import { FaUserCircle, FaCheck, FaTimes } from "react-icons/fa";
+import { FaUserCircle, FaCheck, FaTimes, FaInfoCircle } from "react-icons/fa";
+import PopupLayout from "../components/popup-info-component/PopupLayout.jsx";
 import Navbar from "../components/navbar/Navbar.jsx";
 import SmallIcon from "../components/general-components/SmallIcon.jsx";
 import ConfirmModal from "../components/general-components/ConfirmModal.jsx";
@@ -17,6 +18,9 @@ export default function Profile() {
     meetupId: null,
     meetupTitle: "",
   });
+
+  const [infoModalOpen, setInfoModalOpen] = useState(false);
+  const [selectedMeetupId, setSelectedMeetupId] = useState(null);
 
   // Hämta profildata när komponenten laddas
   useEffect(() => {
@@ -37,11 +41,16 @@ export default function Profile() {
     fetchProfile();
   }, []);
 
+  // Handler för att öppna/stänga info-popup
+  const handleInfoModal = (meetupId) => {
+    setSelectedMeetupId(meetupId);
+    setInfoModalOpen((prev) => !prev);
+  };
+
   // Hanterar "Markera som klar"
   const handleMarkAsDone = async (meetupId) => {
     const result = await markMeetupAsDone(meetupId);
     if (result.success) {
-      
       setUser(result.data);
     } else {
       alert(`Fel: ${result.error}`);
@@ -68,7 +77,6 @@ export default function Profile() {
     const result = await unregisterMeetup(modalState.meetupId);
 
     if (result.success) {
-    
       setUser((prevUser) => ({
         ...prevUser,
         registered: prevUser.registered.filter(
@@ -81,7 +89,6 @@ export default function Profile() {
       closeCancelModal();
     }
   };
-
 
   if (isLoading) {
     return <p style={{ color: "white" }}>Loading profile...</p>;
@@ -110,7 +117,6 @@ export default function Profile() {
         <div className="meetups-section">
           <h2>YOUR BOOKED MEETUPS</h2>
           <div className="meetups-box">
-            
             {user?.registered?.length > 0 ? (
               <ul>
                 {user.registered.map((m) => (
@@ -120,7 +126,6 @@ export default function Profile() {
                     <div className="meetup-details">
                       <span className="meetup-title">{m.title}</span>
                       <div className="meetup-sub-details">
-                        
                         <span className="meetup-date">
                           {new Date(m.date).toLocaleDateString("sv-SE")}
                         </span>
@@ -129,17 +134,26 @@ export default function Profile() {
                       </div>
                     </div>
                     <div className="meetup-actions">
+  
+                      <button
+                        className="action-btn info-btn"
+                        aria-label="Show details"
+                        onClick={() => handleInfoModal(m._id)}
+                      >
+                        <FaInfoCircle />
+                      </button>
+
                       <button
                         className="action-btn done-btn"
                         aria-label="Mark as done"
-                        onClick={() => handleMarkAsDone(m._id)} 
+                        onClick={() => handleMarkAsDone(m._id)}
                       >
                         <FaCheck />
                       </button>
                       <button
                         className="action-btn cancel-btn"
                         aria-label="Cancel meetup"
-                        onClick={() => openCancelModal(m)} 
+                        onClick={() => openCancelModal(m)}
                       >
                         <FaTimes />
                       </button>
@@ -160,12 +174,10 @@ export default function Profile() {
               <ul>
                 {user.history.map((m) => (
                   <li key={m._id}>
-                    {" "}
-                    {/* Använd _id från MongoDB som nyckel */}
+                    
                     <div className="meetup-details">
                       <span className="meetup-title">{m.title}</span>
                       <div className="meetup-sub-details">
-                        
                         <span className="meetup-date">
                           {new Date(m.date).toLocaleDateString("sv-SE")}
                         </span>
@@ -191,6 +203,19 @@ export default function Profile() {
         onConfirm={handleConfirmCancel}
         title={modalState.meetupTitle}
       />
+
+      {infoModalOpen && (
+        <section>
+          <div
+            className="blur-background"
+            onClick={() => handleInfoModal(null)}
+          ></div>
+          <PopupLayout
+            meetupId={selectedMeetupId}
+            handleModal={() => handleInfoModal(null)}
+          ></PopupLayout>
+        </section>
+      )}
     </div>
   );
 }

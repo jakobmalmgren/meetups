@@ -1,37 +1,20 @@
-/* .login {
-  background-color: #1e1e1e;
-  border: 2px solid white;
-
-  width: 100vw;
-  max-width: 600px;
-  padding: 20px;
-
-  min-height: 100vh;
-  height: auto;
-} */
-
 .login_upper-wrapper {
-  /* background-color: gold; */
   width: 100%;
   height: 40%;
 }
 .login_lower-wrapper {
   width: 100%;
   height: 40%;
-  /* background-color: pink; */
 }
 .login_header-wrapper {
-  /* background-color: green; */
   height: 20%;
 }
 .login_header {
-  /* padding-top: 15px; */
   text-align: center;
-  /* background-color: grey; */
   font-family: Merriweather;
   font-weight: 900;
-  font-style: Black;
   font-size: 45px;
+  color: white;
 }
 .login_span {
   color: #cf8c22;
@@ -54,10 +37,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  /* background-color: blueviolet; */
 }
 .login_link-wrapper {
-  /* background-color: aqua; */
   display: flex;
   justify-content: end;
   margin-top: 10px;

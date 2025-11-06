@@ -1,7 +1,6 @@
 .popup-layout {
   width: 90%;
   max-width: 400px;
-
   padding: 15px;
   border-radius: 15px;
   border: 1px solid #cf8c22;
@@ -19,11 +18,8 @@
 
 .popup-layout_section-info {
   height: 30%;
-  /* background-color: pink; */
 }
 .popup-layout_header {
-  /* padding-top: 20px; */
-
   color: white;
   font-size: 17px;
 }
@@ -55,25 +51,29 @@
   margin-top: 10px;
 }
 .popup-layout_btns {
-  /* background-color: green; */
   margin-top: 15px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 10%;
+  height: 70px;
+  position: relative;
 }
 .popup-layout_downIcon {
   font-size: 17px;
 }
 .popup-layout_carousel {
   margin-top: 10px;
-  background-color: #cf8c22;
+  background-color: white;
   height: auto;
   padding: 10px;
   border-radius: 5px;
 }
 .popup-layout_info-text {
   font-size: 10px;
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
 }
 .popup-layout_info-text.success {
   color: green;
