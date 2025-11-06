@@ -13,20 +13,45 @@ export default function PopupLayout({ meetupId, handleModal }) {
   const [open, setOpen] = useState(false);
   const [bookingText, setBookingText] = useState("");
   const [bookingStatus, setBookingStatus] = useState("");
+  //ny
+  const [refreshReviews, setRefreshReviews] = useState(0);
 
+  //ny
+  const fetchSpecMeetup = async () => {
+    try {
+      const data = await specificMeetupWithId(meetupId);
+      setSpecificMeetup(data);
+      console.log("hejfrånpopuplayout: ", specificMeetup);
+    } catch (err) {
+      console.error("Failed to fetch specific meetup:", err);
+    }
+  };
   useEffect(() => {
     if (!meetupId) return;
-    const fetchSpecMeetup = async () => {
-      try {
-        const data = await specificMeetupWithId(meetupId);
-        setSpecificMeetup(data);
-        console.log("hejfrånpopuplayout: ", specificMeetup);
-      } catch (err) {
-        console.error("Failed to fetch specific meetup:", err);
-      }
-    };
+
     fetchSpecMeetup();
   }, [meetupId]);
+
+  const handleReviewAdded = () => {
+    // Öka värdet – triggar en re-render
+    setRefreshReviews((prev) => prev + 1);
+    // Hämta om meetup-info (så du även får uppdaterad review-lista i Layout om du vill visa där)
+    fetchSpecMeetup();
+  };
+
+  // useEffect(() => {
+  //   if (!meetupId) return;
+  //   const fetchSpecMeetup = async () => {
+  //     try {
+  //       const data = await specificMeetupWithId(meetupId);
+  //       setSpecificMeetup(data);
+  //       console.log("hejfrånpopuplayout: ", specificMeetup);
+  //     } catch (err) {
+  //       console.error("Failed to fetch specific meetup:", err);
+  //     }
+  //   };
+  //   fetchSpecMeetup();
+  // }, [meetupId]);
 
   const handleRegisterMeetup = async () => {
     try {
@@ -75,7 +100,7 @@ export default function PopupLayout({ meetupId, handleModal }) {
           </section>
 
           <section className="popup-layout_carousel">
-            <Carousel meetupId={meetupId} />
+            <Carousel meetupId={meetupId} refresh={refreshReviews} />
           </section>
 
           <section className="popup-layout_btns">
@@ -94,7 +119,12 @@ export default function PopupLayout({ meetupId, handleModal }) {
             </PopupButtons>
           </section>
 
-          {open && <PopupTextArea meetupId={meetupId} />}
+          {open && (
+            <PopupTextArea
+              meetupId={meetupId}
+              handleReviewAdded={handleReviewAdded}
+            />
+          )}
         </>
       )}
     </div>

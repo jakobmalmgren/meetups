@@ -5,7 +5,7 @@ import "slick-carousel/slick/slick-theme.css";
 import { useEffect, useState } from "react";
 import { specificMeetupWithId } from "../../api/specificMeetupWithId";
 
-function Carousel({ meetupId }) {
+function Carousel({ meetupId, refresh }) {
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
@@ -24,7 +24,7 @@ function Carousel({ meetupId }) {
     };
 
     fetchReviewsForMeetup();
-  }, [meetupId]);
+  }, [meetupId, refresh]);
 
   const settings = {
     dots: true,

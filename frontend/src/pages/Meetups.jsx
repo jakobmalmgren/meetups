@@ -57,7 +57,10 @@ export default function Meetups() {
 
       const formattedData = data.map((m) => ({
         ...m,
-        date: new Date(m.date).toLocaleDateString("sv-SE"),
+        date: new Date(m.date).toLocaleString("sv-SE", {
+          dateStyle: "short",
+          timeStyle: "short",
+        }),
       }));
       setMeetups(formattedData);
     } catch (error) {
@@ -122,6 +125,7 @@ export default function Meetups() {
               <option value="" disabled>
                 Location
               </option>
+              <option value="">All Location</option>
               <option value="a-z">Location (A-Ö)</option>
             </select>
 
@@ -134,6 +138,7 @@ export default function Meetups() {
               <option value="" disabled>
                 Date
               </option>
+              <option value="">All Date</option>
               <option value="newest">Newest first</option>
               <option value="oldest">Oldest first</option>
             </select>
@@ -147,6 +152,7 @@ export default function Meetups() {
               <option value="" disabled>
                 Category
               </option>
+              <option value="">All Categories</option>
               <option value="a-z">Category (A-Ö)</option>
             </select>
           </div>
@@ -169,6 +175,7 @@ export default function Meetups() {
                         <div className="meetup-sub-details">
                           <span className="meetup-date">{m.date}</span>
                           <span className="meetup-location">{m.location}</span>
+                          <span className="meetup-host">{m.host}</span>
                           <span className="meetup-category">{m.category}</span>
                         </div>
                       </div>

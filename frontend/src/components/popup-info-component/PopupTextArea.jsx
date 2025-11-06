@@ -4,7 +4,7 @@ import { FaStar } from "react-icons/fa";
 import PopupButtons from "./PopupButtons";
 import { reviewAPi } from "../../api/reviewApi";
 
-function PopupTextArea({ meetupId }) {
+function PopupTextArea({ meetupId, handleReviewAdded }) {
   const [rating, setRating] = useState(0);
   const [reviewText, setReviewText] = useState("");
   const [infoText, setInfoText] = useState("");
@@ -29,7 +29,11 @@ function PopupTextArea({ meetupId }) {
     setLeavingReview("success");
     setRating(0);
     setReviewText("");
+    if (handleReviewAdded) {
+      handleReviewAdded();
+    }
   };
+
   return (
     <section className="review">
       <h4 className="review_title">Leave a review</h4>
