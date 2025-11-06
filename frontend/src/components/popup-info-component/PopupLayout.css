@@ -1,7 +1,6 @@
 .popup-layout {
   width: 90%;
   max-width: 400px;
-
   padding: 15px;
   border-radius: 15px;
   border: 1px solid #cf8c22;
@@ -19,11 +18,8 @@
 
 .popup-layout_section-info {
   height: 30%;
-  /* background-color: pink; */
 }
 .popup-layout_header {
-  /* padding-top: 20px; */
-
   color: white;
   font-size: 17px;
 }
@@ -55,7 +51,6 @@
   margin-top: 10px;
 }
 .popup-layout_btns {
-  /* background-color: green; */
   margin-top: 15px;
   display: flex;
   justify-content: space-between;

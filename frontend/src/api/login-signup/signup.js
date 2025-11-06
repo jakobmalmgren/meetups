@@ -15,8 +15,6 @@ export async function signup(email, password) {
       return { success: false, error: data.error || "Unknown error" };
     }
 
-    // console.log(data);
-
     return data;
   } catch (error) {
     return { success: false, error: error.message };

@@ -1,36 +1,24 @@
 import "./Meetups.css";
 import { useState, useEffect, useCallback } from "react";
 import { FaInfoCircle } from "react-icons/fa";
-// import { useNavigate } from "react-router-dom";
+
 import Navbar from "../components/navbar/Navbar.jsx";
 import SmallIcon from "../components/general-components/SmallIcon.jsx";
 import PopupLayout from "../components/popup-info-component/PopupLayout.jsx";
 import { getMeetups } from "../api/meetupsApi.js";
 
 export default function Meetups() {
-  // const navigate = useNavigate();
-
   // Data states
   const [meetups, setMeetups] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [openModal, setOpenModal] = useState(false);
   const [meetupId, setMeetupId] = useState("");
 
-  // Popup states
-  // const [selectedMeetupId, setSelectedMeetupId] = useState(null);
-  // const [isLoggedIn, setIsLoggedIn] = useState(false);
-
   // Filter states
   const [searchQuery, setSearchQuery] = useState("");
   const [locationFilter, setLocationFilter] = useState("");
   const [dateFilter, setDateFilter] = useState("");
   const [categoryFilter, setCategoryFilter] = useState("");
-
-  // Kontrollera inloggningsstatus vid första laddning
-  // useEffect(() => {
-  //   const token = localStorage.getItem("token");
-  //   setIsLoggedIn(!!token);
-  // }, []);
 
   // Funktion som översätter filter-states till backend-anrop
   const loadMeetups = useCallback(async () => {
@@ -75,18 +63,6 @@ export default function Meetups() {
     loadMeetups();
   }, [loadMeetups]);
 
-  // Inloggnings-check för att se detaljer
-  // const handleOpenDetails = (meetupId) => {
-  //   if (!isLoggedIn) {
-  //     alert("Du måste vara inloggad för att se detaljerad information.");
-  //   } else {
-  //     setSelectedMeetupId(meetupId);
-  //   }
-  // };
-
-  // const closePopup = () => {
-  //   setSelectedMeetupId(null);
-  // };
   const handleModal = (id) => {
     setMeetupId(id);
     setOpenModal((prev) => {

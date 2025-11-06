@@ -9,7 +9,6 @@ export async function registerMeetup(id) {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
-          // nån text för de ingen token`?
         },
       }
     );

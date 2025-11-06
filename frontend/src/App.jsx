@@ -6,8 +6,7 @@ import Signup from "./pages/SignUp.jsx";
 import Meetups from "./pages/Meetups.jsx";
 import Layout from "./components/general-components/Layout.jsx";
 import "./App.css";
-import PopupLayout from "./components/popup-info-component/PopupLayout.jsx";
-import BlurrBackground from "./components/general-components/BlurrBackground.jsx";
+
 function App() {
   return (
     <>
@@ -53,9 +52,6 @@ function App() {
           }
         />
       </Routes>
-      {/* <div>
-        <PopupLayout></PopupLayout>
-      </div> */}
     </>
   );
 }
