@@ -1,3 +1,4 @@
+// frontend/src/components/popup-info-component/PopupLayout.jsx
 import "./PopupLayout.css";
 import PopupButtons from "./PopupButtons";
 import { FaCircleXmark } from "react-icons/fa6";
@@ -28,6 +29,15 @@ export default function PopupLayout({ meetupId, handleModal }) {
   };
   useEffect(() => {
     if (!meetupId) return;
+    const fetchSpecMeetup = async () => {
+      try {
+        const data = await specificMeetupWithId(meetupId);
+        setSpecificMeetup(data);
+        console.log("hejfrånpopuplayout: ", data); // undvik stale state-logg
+      } catch (err) {
+        console.error("Failed to fetch specific meetup:", err);
+      }
+    };
 
     fetchSpecMeetup();
   }, [meetupId]);
@@ -65,19 +75,18 @@ export default function PopupLayout({ meetupId, handleModal }) {
       setBookingStatus("success");
       const latestData = await specificMeetupWithId(meetupId);
       console.log("LATEST", latestData);
-
-      // setSpecificMeetup(latestData);
       setSpecificMeetup({ ...latestData });
-      // setSpecificMeetup((prev) => ({
-      //   ...prev,
-      //   availableSpots: prev.availableSpots - 1,
-      // }));
     } catch (err) {
       console.log(err);
     }
   };
 
-  // ett api för reviews me! finns de inga reviews.visa ej några reviews..
+  const formatSvShort = (value) => {
+    if (!value) return "";
+    const d = new Date(value);
+    if (Number.isNaN(d.getTime())) return String(value);
+    return d.toLocaleString("sv-SE", { dateStyle: "short", timeStyle: "short" });
+  };
 
   return (
     <div className="popup-layout">
@@ -90,7 +99,8 @@ export default function PopupLayout({ meetupId, handleModal }) {
           <section className="popup-layout_section-info">
             <h1 className="popup-layout_header">{`Event: ${specificMeetup.title}`}</h1>
             <p className="popup-layout_time">
-              {`Tid & plats: ${specificMeetup.date}`}
+
+              {`Tid & plats: ${formatSvShort(specificMeetup.date)}`}
             </p>
             <p className="popup-layout_info">
               {`Description: ${specificMeetup.description}`}
